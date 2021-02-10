@@ -1,0 +1,114 @@
+html{
+	min-height: 100%;
+	position: relative;
+}
+
+#content{
+	padding-top: 80px;
+	padding-bottom: 70px;
+}
+
+#content p{
+	font-family: 'Oswald', sans-serif;
+}
+#content h1, #content h5{
+	font-family: 'Russo One', Arial;
+}
+
+header li :hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+#mainpagecontent{
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 70, 128, 0.8);
+}
+
+header li .active {
+	background-color: rgba(255, 255, 255 , 0.3);
+	border-radius: 10px;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
+
+.page-content {
+	padding-top: 30px;
+}
+
+.single-car-item{
+	border: 1px solid #afafaf;
+	transition: all ease-in-out 0.3s;
+}
+
+.single-car-item a{
+	text-decoration: none;
+	color: #000;
+}
+
+.card{
+	position: relative;
+}
+.userblock{
+	position: absolute;
+	bottom: 0;
+}
+
+.single-car-item .card-footer{
+	display: flex;
+}
+
+.single-car-item:hover{
+	border-color: rgba(0, 70, 128, 0.8);
+	box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.5);
+	transform: translateY(-10px);
+}
+
+.model-info{
+	margin-top: 50px;
+}
+
+.add-car-button{
+	margin: 20px;
+}
+
+.image-car-div{
+	height: 200px;
+}
+
+.image-car-div img{
+	max-width: 100%;
+	height: auto;
+}
+
+.edit-fields{
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.company-info{
+	font-family: 'Russo One', Arial;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.company-info a{
+	text-decoration: none;
+}
+
+footer {
+	margin-right: 1000px;
+	min-width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+footer a {
+	text-decoration: none;
+}
+
+footer .image-footer {
+	width: 30px;
+}

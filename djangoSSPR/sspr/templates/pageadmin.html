@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 
+  Admin-каталог
+{% endblock %}
+
+{% block content %}
+
+<main id="content">
+  <div class="container">
+    <h1> Admin-Каталог</h1>
+
+    <div class="add-car-button">
+      <a class="btn btn-primary" href="productedit" role="button">Добавить</a>
+    </div>
+
+    <div class="row">
+
+
+      {% for singleCar in cars %}
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card single-car-item h-100">
+          <a href="productinfo{{ singleCar.pk_car }}">
+            {% if singleCar.imagepath %}
+              <img src="{{ singleCar.imagepath }}" class="card-img-top" alt="{{ singleCar.pk_car }}">
+            {% else %}
+              <img src="{% static 'img/emptyimage.png' %}" class="card-img-top" alt="Отсутствует">
+            {% endif %}
+            <div class="card-body">
+              <h5> {{ singleCar.pk_baseavto.pk_avtofirm.firmname}} - {{ singleCar.pk_baseavto.modelname }}</h5>
+              <p>Цена: {{ singleCar.price }} руб.</p>
+              <p>Надстройка: {{ singleCar.pk_superstructure.supestructurename}} </p>
+              <p>Год выпуска: {{ singleCar.yearissue|date:"Y"}} </p>
+            </div>
+          </a>
+          <div class="card-footer mt-auto">
+            <!-- Админские кнопки редактирования и удаления -->
+            <form method="POST" action="productedit">
+              <button type="submit" class="btn btn-warning edit">Изменить</button>
+            </form>
+
+            <form method="POST" >
+              <button type="submit" class="btn btn-warning erase">Удалить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+
+
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}

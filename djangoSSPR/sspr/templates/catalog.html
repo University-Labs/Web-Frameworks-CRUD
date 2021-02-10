@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 
+  Каталог
+{% endblock %}
+
+{% block content %}
+
+<main id="content">
+  <div class="container">
+    <h1> Каталог</h1>
+    <div class="row">
+
+      {% for singleCar in cars %}
+
+      <div class="col-lg-3 col-md-6">
+        <div class="card single-car-item h-100">
+          <a href="{{ singleCar.get_absolute_url }}">
+            {% if singleCar.imagepath %}
+              <img src="{{ singleCar.imagepath }}" class="card-img-top" alt="{{ singleCar.pk_car }}">
+            {% else %}
+              <img src="{% static 'img/emptyimage.png' %}" class="card-img-top" alt="Отсутствует">
+            {% endif %}
+            <div class="card-body">
+              <h5> {{ singleCar.pk_baseavto.pk_avtofirm.firmname}} - {{ singleCar.pk_baseavto.modelname }}</h5>
+              <p>Цена: {{ singleCar.price }} руб.</p>
+              <p>Надстройка: {{ singleCar.pk_superstructure.supestructurename}} </p>
+              <p>Год выпуска: {{ singleCar.yearissue|date:"Y"}} </p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}
