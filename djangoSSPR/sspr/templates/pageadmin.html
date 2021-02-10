@@ -22,7 +22,7 @@
 
       <div class="col-lg-3 col-md-6">
         <div class="card single-car-item h-100">
-          <a href="productinfo{{ singleCar.pk_car }}">
+          <a href="{{ singleCar.get_absolute_url }}">
             {% if singleCar.imagepath %}
               <img src="{{ singleCar.imagepath }}" class="card-img-top" alt="{{ singleCar.pk_car }}">
             {% else %}
@@ -37,13 +37,19 @@
           </a>
           <div class="card-footer mt-auto">
             <!-- Админские кнопки редактирования и удаления -->
+            
+            <!-- Редактирование -->
             <form method="POST" action="productedit">
               <button type="submit" class="btn btn-warning edit">Изменить</button>
             </form>
 
-            <form method="POST" >
-              <button type="submit" class="btn btn-warning erase">Удалить</button>
+
+             <!-- Удаление -->
+            <form method="POST" action="{% url 'erasecar' carNumber=singleCar.pk_car %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-warning edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>
             </form>
+            
           </div>
         </div>
       </div>

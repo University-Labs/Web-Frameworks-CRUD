@@ -24,4 +24,5 @@ urlpatterns = [
     path('catalog/', views.catalog, name="catalog"),
     path('pageadmin/', views.pageadmin, name="pageadmin"),
     path('productinfo_<int:carNumber>/', views.productinfo, name="productinfo"),
+    path('erasecar_<int:carNumber>/', views.erasecar, name="erasecar"),
 ]
