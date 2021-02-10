@@ -83,9 +83,8 @@ header li .active {
 	height: auto;
 }
 
-.edit-fields{
-	padding-top: 10px;
-	padding-bottom: 5px;
+.margin-top-xx{
+	margin-top: 20px;
 }
 
 .company-info{

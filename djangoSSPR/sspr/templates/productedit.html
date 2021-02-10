@@ -1,121 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Обновление продукта</title>
+{% extends 'base.html' %}
+{% load static %}
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- Подключаем шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+{% block title %} 
+  {% if pk %}
+    Изменение продукта
+  {% else %}
+    Добавление продукта
+  {% endif %}
+{% endblock %}
 
-  </head>
-  <body>
-    <script src="js/bootstrap.min.js"></script>
-
-
-
-    <header id="header" class="fixed-top">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <a href="index" class="navbar-brand">Спец. техника</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
-            aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navContent">
-            <ul class="navbar-nav mr-auto mb-3 mb-lg-0">
-
-              <li class="nav-item">
-                <a href="index" class="nav-link">Главная</a>
-              </li>
-
-              <li class="nav-item">
-                <a href="catalog" class="nav-link">Каталог</a>
-              </li>
-
-              <li class="nav-item">
-                <a href="productinfo" class="nav-link">One car</a>
-              </li>
-
-              <li class="nav-item">
-                <a href="productedit" class="nav-link active">Car edit</a>
-              </li>
-
-              <li class="nav-item">
-                <a href="pageadmin" class="nav-link">Car-list administrator</a>
-              </li>
-
-              <li class="nav-item">
-                <a href="#" class="nav-link">Вход</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Регистрация</a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+{% block content %}
 
     <main id="content">
       <div class="container">
-        <h1>Обновление модели:</h1>
+        {% if pk %}
+          <h1>Обновление модели:</h1>
+        {% else %}
+          <h1>Добавление модели: </h1>
+        {% endif %}
 
-          <form method="POST">
-            <div class="form-group edit-fields">
-              <label for="chooseFile">Модель базы</label>
-              <select required name="model" type="text" class="form-control" placeholder="Укажите название модели">
-                <option>КАМАЗ-43118</option>
-                <option> SCANIA-S500</option>
-                <option>МАЗ-22342</option>
-              </select>
-            </div>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
 
-            <div class="form-group edit-fields">
-              <label for="chooseFile">Надстройка</label>
-              <select required name="superstructure" type="text" class="form-control" placeholder="Выберите надстройку">
-                <option>Кран MH-55</option>
-                <option>Цистерна</option>
-                <option>Бетономеситель BHS Sonthofen</option>
-              </select>
-            </div>
+            <div class="btn-group margin-top-xx">
+              <button type="submit" class="btn btn-success">
 
-            <div class="form-group edit-fields">
-              <label for="category">Категория</label>
-              <select required name="category" type="text" class="form-control" placeholder="Выберите категорию">
-                <option>Автокран</option>
-                <option>Комбайн</option>
-                <option>Погрузчик</option>
-                <option>Бетономеситель</option>
-              </select>
-            </div>
-
-            <div class="form-group edit-fields">
-              <label for="cost">Цена</label>
-              <input required name="cost" type="number" class="form-control" placeholder="Укажите цену">
-            </div>
-
-            <div class="form-group edit-fields">
-              <label for="chooseFile">Фото</label>
-              <input name = "imagePath" type="file" class="chooseFile form-control-file" placeholder="Выберите фото">
-            </div>
-
-            <div class="form-group edit-fields">
-              <label for="description">Описание</label>
-              <textarea class="description form-control"></textarea></p>
-            </div>
-
-
-            <div class="btn-group">
-              <button type="submit" class="btn btn-success">Сохранить</button>
+                Сохранить</button>
               <button type="button" class="btn btn-default" onclick="javascript:history.back()">Назад</button>
             </div>
           </form>
@@ -123,15 +34,4 @@
       </div>
     </main>
 
-
-  <footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-      <a class="text-muted" href="https://github.com/evster-coder">
-        BoysGang@zhenya, 2021 &copy
-        <image src="img/icon.jpg" class="image-footer">
-      </a>
-    </div>
-  </footer>
-
-  </body>
-</html>
+{% endblock %}

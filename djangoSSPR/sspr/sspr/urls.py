@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djangoapp import views
+from django.conf import settings # new
+from django.conf.urls.static import static # new
+
 
 urlpatterns = [
     path('admin', admin.site.urls),
@@ -25,4 +28,9 @@ urlpatterns = [
     path('pageadmin/', views.pageadmin, name="pageadmin"),
     path('productinfo_<int:carNumber>/', views.productinfo, name="productinfo"),
     path('erasecar_<int:carNumber>/', views.erasecar, name="erasecar"),
+    path('createcar/', views.createcar, name="createcar"),
+    path('editcar_<int:carNumber>/', views.editcar, name="editcar"),
+
 ]
+if settings.DEBUG: # new
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -18,7 +18,7 @@
         <div class="card single-car-item h-100">
           <a href="{{ singleCar.get_absolute_url }}">
             {% if singleCar.imagepath %}
-              <img src="{{ singleCar.imagepath }}" class="card-img-top" alt="{{ singleCar.pk_car }}">
+            <img src="{{singleCar.imagepath.url}}" class="card-img-top" alt="{{ singleCar.pk_car }}">
             {% else %}
               <img src="{% static 'img/emptyimage.png' %}" class="card-img-top" alt="Отсутствует">
             {% endif %}
