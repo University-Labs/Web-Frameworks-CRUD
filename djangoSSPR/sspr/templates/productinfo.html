@@ -15,7 +15,7 @@
           <div class="col">
             <div class="col-lg-4">
               {% if singleCar.imagepath %}
-                <img src="{{ singleCar.imagepath }}" class="card-img-top" alt="{{ singleCar.pk_car }}>
+              <img src="{{singleCar.imagepath.url}}" class="card-img-top" alt="{{ singleCar.pk_car }}">
               {% else %}
                 <img src="{% static 'img/emptyimage.png' %}" class="card-img-top" alt="Отсутствует">
               {% endif %}
