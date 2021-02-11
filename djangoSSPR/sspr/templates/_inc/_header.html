@@ -10,7 +10,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navContent">
-          <ul class="navbar-nav mr-auto mb-3 mb-lg-0">
+          <ul class="navbar-nav me-auto">
             <li class="nav-item">
               <a href="{% url 'index' %}" class="nav-link">Главная</a>
             </li>
@@ -22,17 +22,14 @@
             <li class="nav-item">
               <a href="{% url 'pageadmin' %}" class="nav-link">Режим администратора</a>
             </li>
-          
-          <div class"mr-auto">
-            <li class="nav-item">
-              <a href="#" class="nav-link">Вход</a>
-            </li>
-            </div>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Регистрация</a>
-            </li>
-
           </ul>
+          
+          <div class="navbar-nav ms-auto">
+              <a href="#" class="nav-item nav-link">Вход</a>
+              <a href="#" class="nav-item nav-link">Регистрация</a>
+          </div>
+
+          
         </div>
       </div>
     </nav>
