@@ -6,6 +6,7 @@ path = require("path"),
 mysql = require('mysql');
 routes = require('./routes/routes')
 
+
 //подключение маршрутизации
 app.use("/", routes);
 
