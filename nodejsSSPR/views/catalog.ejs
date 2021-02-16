@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Каталог спецтехники</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
+
+
+    <%- include("partials/_header.ejs") %>
+
+    <main id="content">
+      <div class="container">
+        <h1> Каталог</h1>
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card single-car-item h-100">
+              <a href="productinfo">
+                <img src="img/KAMAZ43118Kran.jpg" class="card-img-top" alt="KAMAZ">
+                <div class="card-body">
+                  <h5>Кран MH-55 на шасси КАМАЗ-43118</h5>
+                  <p>Цена: 5500000 руб.</p>
+                  <p>Надстройка: Кран MH-55 </p>
+                  <p>Год выпуска: 2019</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </main>
+
+
+  <%- include("partials/_footer.ejs") %>
+
+  </body>
+</html>
