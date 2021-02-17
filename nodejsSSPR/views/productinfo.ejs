@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title><%= title %></title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
+
+    <%- include("partials/_header.ejs") %>
+
+
+    <main id="content">
+      <div class="container">
+        <h1>Информация о модели: <%= thisCar.Superstructure.superstructureName %>
+        на шасси
+        <%= thisCar.BaseAvto.AvtoFirm.firmName %> - <%= thisCar.BaseAvto.modelName %></h1>
+        <div class="feature">
+          <h5>Категория: <%= thisCar.AvtoCategory.nameCategory %></h5>
+          <div class="col">
+            <div class="col-lg-4">
+              <% if (thisCar.imagepath) { %>
+              <img src="<%= thisCar.imagepath %>" class="card-img-top" alt="<%= thisCar.PK_Car %>">
+              <% } else  { %>
+                <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+              <% } %>
+            </div>
+          </div>
+          <div class="model-info">
+            <p>Производитель: <%= thisCar.BaseAvto.AvtoFirm.firmName %></p>
+            <p>Модель: <%= thisCar.BaseAvto.modelName %></p>
+            <p>Надстройка на авто: <%= thisCar.Superstructure.superstructureName %> </p>
+            <p>Цена: <%= thisCar.price %> руб.</p>
+            <p>Год выпуска: <%= thisCar.yearissue %> </p>
+            <p>Описание: <%= thisCar.description %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include("partials/_footer.ejs") %>
+
+
+  </body>
+</html>

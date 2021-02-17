@@ -5,9 +5,12 @@ app = express(),
 path = require("path"),
 mysql = require('mysql2'),
 routes = require('./routes/routes');
+bodyParser = require('body-parser')
 
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

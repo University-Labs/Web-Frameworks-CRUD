@@ -35,6 +35,34 @@ router.get('/catalog', function(req, res) {
     catch(err => console.log(err));
 });
 
+//просмотр отдельного продукта
+router.get('/productinfo_:id', function(req, res) {
+    Car.findOne({
+        include: [
+            {model: Superstructure},
+            {model: AvtoCategory},
+            {model: BaseAvto,
+                include:[AvtoFirm]
+            }],
+        where: {
+            PK_Car: req.params.id
+        }
+    }).then(data =>
+    {
+        res.render("productinfo", {title:"Подробности продукта", thisCar: data});
+    }).
+    catch(err => console.log(err));
+});
+
+//удаление
+router.post('/delete_:id', async function(req, res) {
+    await Car.destroy({
+        where: {
+            PK_Car : req.params.id
+        }
+    });
+    res.redirect("/pageadmin");
+});
 
 //админ-каталог
 router.get('/pageadmin', function(req, res) {

@@ -36,7 +36,7 @@
 
             <div class="col-lg-3 col-md-6">
               <div class="card single-car-item h-100">
-                <a href="productinfo">
+                <a href="productinfo_<%= cars[i].PK_Car %>">
 
                   <% if (cars[i].imagepath) {%>
                     <img src="img/KAMAZ43118Kran.jpg" class="card-img-top" alt="">
@@ -59,8 +59,8 @@
                     <button type="submit" class="btn btn-warning edit">Изменить</button>
                   </form>
 
-                  <form method="POST">
-                    <button type="submit" class="btn btn-warning erase">Удалить</button>
+                  <form method="POST" action="delete_<%=cars[i].PK_Car%>">
+                    <button type="submit" class="btn btn-warning edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>
                   </form>
                 </div>
               </div>
