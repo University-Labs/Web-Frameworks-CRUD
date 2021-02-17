@@ -50,8 +50,8 @@ router.get('/productinfo_:id', function(req, res) {
     }).then(data =>
     {
         res.render("productinfo", {title:"Подробности продукта", thisCar: data});
-    }).
-    catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 });
 
 //удаление
@@ -63,6 +63,78 @@ router.post('/delete_:id', async function(req, res) {
     });
     res.redirect("/pageadmin");
 });
+
+//добавление нового продукта
+router.get('/createcar', async function (req, res) {
+    var bases = await BaseAvto.findAll({
+            include: [AvtoFirm]
+        });
+    var categories = await AvtoCategory.findAll();
+    var superstructures = await Superstructure.findAll();
+    res.render('productedit', {title: "Новый ааавтомобиль", curObj: {}, bases : bases, categories: categories, superstructures: superstructures});
+});
+
+
+router.post('/createcar', async function(req, res) {
+    var obj = await Car.create({
+        PK_BaseAvto : req.body.baseavto,
+        PK_Superstructure : req.body.superstructure,
+        PK_Category : req.body.category,
+        yearissue : req.body.yearissue,
+        price: req.body.price,
+        imagepath : req.body.imagepath,
+        description : req.body.description
+    }).then(function (Cars) {
+        if(!Cars)
+        {
+            res.status(400).send("ERRORs");
+        }
+    });
+    res.redirect('/pageadmin');
+});
+
+//обновление существующего продукта
+router.get('/updatecar_:id', async function(req,res) {
+    var bases = await BaseAvto.findAll({
+            include: [AvtoFirm]
+        });
+    var categories = await AvtoCategory.findAll();
+    var superstructures = await Superstructure.findAll();
+
+    await Car.findOne({
+            where: {
+                PK_Car: req.params.id
+            }
+        })
+    .then(data => {
+        res.render("productedit", {title: "Обновление автомобиля",
+                                    curObj : data,
+                                    bases : bases,
+                                    categories: categories,
+                                    superstructures: superstructures
+                                    })
+    })
+    .catch(err => console.log(err));
+});
+
+router.post('/updatecar:id', async function(req,res) {
+    if(req.body.pk_car)
+    {
+        await Car.update({
+            yearissue: req.body.yearissue,
+            price: req.body.price,
+            imagePath: req.body.imagepath,
+            description: req.body.description,
+            PK_BaseAvto: req.body.baseavto,
+            PK_Superstructure: req.body.superstructure,
+            PK_Category: req.body.category
+        },{
+            where: {PK_Car : req.body.pk_car}
+        });
+    }
+    res.redirect('/pageadmin');
+})
+
 
 //админ-каталог
 router.get('/pageadmin', function(req, res) {

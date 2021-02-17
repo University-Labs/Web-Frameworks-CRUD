@@ -27,7 +27,7 @@
         <h1> Admin-Каталог</h1>
 
         <div class="add-car-button">
-          <a class="btn btn-primary" href="productedit" role="button">Добавить</a>
+          <a class="btn btn-primary" href="createcar" role="button">Добавить</a>
         </div>
 
         <div class="row">
@@ -39,7 +39,7 @@
                 <a href="productinfo_<%= cars[i].PK_Car %>">
 
                   <% if (cars[i].imagepath) {%>
-                    <img src="img/KAMAZ43118Kran.jpg" class="card-img-top" alt="">
+                    <img src="<%= cars[i].imagepath %>" class="card-img-top" alt="">
                   <% } else {%>
                     <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
                   <% } %>
@@ -55,9 +55,7 @@
                 </a>
                 <div class="card-footer mt-auto">
                   <!-- Админские кнопки редактирования и удаления -->
-                  <form method="POST" action="productedit">
-                    <button type="submit" class="btn btn-warning edit">Изменить</button>
-                  </form>
+                    <a class="btn btn-warning edit" href="updatecar_<%= cars[i].PK_Car %>" role="button">Изменить</a>
 
                   <form method="POST" action="delete_<%=cars[i].PK_Car%>">
                     <button type="submit" class="btn btn-warning edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>
