@@ -33,8 +33,11 @@ BaseAvto.init({
 
 
 AvtoFirm.hasMany(BaseAvto, {
-	sourceKey: "PK_AvtoFirm",
 	foreignKey: "PK_AvtoFirm"
-})
+});
+BaseAvto.belongsTo(AvtoFirm,
+{
+	foreignKey: "PK_AvtoFirm"
+});
 
 module.exports = BaseAvto

@@ -32,41 +32,27 @@
 
         <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="card single-car-item h-100">
-              <a href="productinfo">
-                <img src="img/KAMAZ43118Kran.jpg" class="card-img-top" alt="KAMAZ">
-                <div class="card-body">
-                  <h5>Кран MH-55 на шасси КАМАЗ-43118</h5>
-                  <p>Цена: 5500000 руб.</p>
-                  <p>Надстройка: Кран MH-55 </p>
-                  <p>Год выпуска: 2019</p>
-                </div>
-              </a>
-                <div class="card-footer mt-auto">
-                  <!-- Админские кнопки редактирования и удаления -->
-                  <form method="POST" action="productedit">
-                    <button type="submit" class="btn btn-warning edit">Изменить</button>
-                  </form>
+          <% for (var i = 0; i < cars.length; i+=1) { %>
 
-                  <form method="POST" >
-                    <button type="submit" class="btn btn-warning erase">Удалить</button>
-                  </form>
-                </div>
-            </div>
-          </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card single-car-item h-100">
+                <a href="productinfo">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="card single-car-item h-100">
-              <a href="productinfo">
-                <img src="img/ScaniaS500Beton.png" class="card-img-top" alt="Scania">
-                <div class="card-body">
-                  <h5>Бетоносмеситель LIEBHERR HTM на шасси Scania-S500</h5>
-                  <p>Цена: 6500000 руб.</p>
-                  <p>Надстройка: Бетоносмеситель LIEBHERR HTM</p>
-                  <p>Год выпуска: 2013</p>
-                </div>
-              </a>
+                  <% if (cars[i].imagepath) {%>
+                    <img src="img/KAMAZ43118Kran.jpg" class="card-img-top" alt="">
+                  <% } else {%>
+                    <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+                  <% } %>
+
+                  <div class="card-body">
+                    <h5><%= cars[i].Superstructure.superstructureName %>
+                      на шасси
+                      <%= cars[i].BaseAvto.AvtoFirm.firmName %> - <%= cars[i].BaseAvto.modelName %></h5>
+                    <p>Цена: <%= cars[i].price %> руб.</p>
+                    <p>Надстройка: <%= cars[i].Superstructure.superstructureName %> </p>
+                    <p>Год выпуска: <%= cars[i].yearissue %></p>
+                  </div>
+                </a>
                 <div class="card-footer mt-auto">
                   <!-- Админские кнопки редактирования и удаления -->
                   <form method="POST" action="productedit">
@@ -77,81 +63,10 @@
                     <button type="submit" class="btn btn-warning erase">Удалить</button>
                   </form>
                 </div>
+              </div>
             </div>
-          </div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="card single-car-item h-100">
-              <a href="productinfo">
-                <img src="img/MAZ.jpg" class="card-img-top" alt="maz">
-                <div class="card-body">
-                  <h5>45492B на шасси МАЗ-6312А8</h5>
-                  <p>Цена: 3500000 руб.</p>
-                  <p>Надстройка: Ломовоз</p>
-                  <p>Год выпуска: 2019</p>
-                </div>
-              </a>
-                <div class="card-footer mt-auto">
-                  <!-- Админские кнопки редактирования и удаления -->
-                  <form method="POST" action="productedit">
-                    <button type="submit" class="btn btn-warning edit">Изменить</button>
-                  </form>
-
-                  <form method="POST">
-                    <button type="submit" class="btn btn-warning erase">Удалить</button>
-                  </form>
-                </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="card single-car-item h-100">
-              <a href="productinfo">
-                <img src="img/maz_beton.jpg" class="card-img-top" alt="mazbeton">
-                <div class="card-body">
-                  <h5>Бетоносмеситель АБС 7DA на шасси МАЗ-6303А5</h5>
-                  <p>Цена: 4550000 руб.</p>
-                  <p>Надстройка: Бетоносмеситель АБС 7DA</p>
-                  <p>Год выпуска: 2018</p>
-                </div>
-              </a>
-                <div class="card-footer mt-auto">
-                  <!-- Админские кнопки редактирования и удаления -->
-                  <form method="POST" action="productedit">
-                    <button type="submit" class="btn btn-warning edit">Изменить</button>
-                  </form>
-
-                  <form method="POST">
-                    <button type="submit" class="btn btn-warning erase">Удалить</button>
-                  </form>
-                </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="card single-car-item h-100">
-              <a href="productinfo">
-                <img src="img/KAMAZ43118Musor.jpg" class="card-img-top" alt="KAMAZ">
-                <div class="card-body">
-                  <h5>Мусоровоз КО-440-6 на шасси КАМАЗ-43118</h5>
-                  <p>Цена: 5000000 руб.</p>
-                  <p>Надстройка: Мусоровоз КО-440-6</p>
-                  <p>Год выпуска: 2017</p>
-                </div>
-              </a>
-                <div class="card-footer mt-auto">
-                  <!-- Админские кнопки редактирования и удаления -->
-                  <form method="POST" action="productedit">
-                    <button type="submit" class="btn btn-warning edit">Изменить</button>
-                  </form>
-
-                  <form method="POST">
-                    <button type="submit" class="btn btn-warning erase">Удалить</button>
-                  </form>
-                </div>
-            </div>
-          </div>
-
+          <% }%>
 
 
         </div>

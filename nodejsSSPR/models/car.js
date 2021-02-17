@@ -44,7 +44,7 @@ Car.init({
 	},
 	PK_Superstructure: {
 		type: DataTypes.INTEGER,
-		allowNull: false
+		allowNull: false,
 	},
 	PK_Category: {
 		type: DataTypes.INTEGER,
@@ -57,15 +57,26 @@ Car.init({
 
 
 BaseAvto.hasMany(Car, {
-	sourceKey: "PK_BaseAvto",
 	foreignKey: "PK_BaseAvto"
 });
-Superstructure.hasMany(BaseAvto, {
-	sourceKey: "PK_Superstructure",
+Car.belongsTo(BaseAvto,
+{
+	foreignKey: "PK_BaseAvto"
+});
+
+Superstructure.hasMany(Car, {
 	foreignKey: "PK_Superstructure"
 });
-AvtoCategory.hasMany(BaseAvto, {
-	sourceKey: "PK_Category",
+Car.belongsTo(Superstructure,
+{
+	foreignKey: "PK_Superstructure"
+});
+
+AvtoCategory.hasMany(Car, {
+	foreignKey: "PK_Category"
+});
+Car.belongsTo(AvtoCategory,
+{
 	foreignKey: "PK_Category"
 });
 

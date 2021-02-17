@@ -28,19 +28,31 @@
         <h1> Каталог</h1>
         <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="card single-car-item h-100">
-              <a href="productinfo">
-                <img src="img/KAMAZ43118Kran.jpg" class="card-img-top" alt="KAMAZ">
-                <div class="card-body">
-                  <h5>Кран MH-55 на шасси КАМАЗ-43118</h5>
-                  <p>Цена: 5500000 руб.</p>
-                  <p>Надстройка: Кран MH-55 </p>
-                  <p>Год выпуска: 2019</p>
-                </div>
-              </a>
+          <% for (var i = 0; i < cars.length; i+=1) { %>
+
+            <div class="col-lg-3 col-md-6">
+              <div class="card single-car-item h-100">
+                <a href="productinfo">
+
+                  <% if (cars[i].imagepath) {%>
+                    <img src="img/KAMAZ43118Kran.jpg" class="card-img-top" alt="">
+                  <% } else {%>
+                    <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+                  <% } %>
+
+                  <div class="card-body">
+                    <h5><%= cars[i].Superstructure.superstructureName %>
+                      на шасси
+                      <%= cars[i].BaseAvto.AvtoFirm.firmName %> - <%= cars[i].BaseAvto.modelName %></h5>
+                    <p>Цена: <%= cars[i].price %> руб.</p>
+                    <p>Надстройка: <%= cars[i].Superstructure.superstructureName %> </p>
+                    <p>Год выпуска: <%= cars[i].yearissue %></p>
+                  </div>
+                </a>
+              </div>
             </div>
-          </div>
+
+          <% }%>
 
 
         </div>

@@ -1,4 +1,9 @@
-var Car = require('../models/car')
+var Car = require('../models/car'),
+    Superstructure = require('../models/superstructure'),
+    AvtoCategory = require('../models/avtocategory'),
+    BaseAvto = require('../models/baseavto'),
+    AvtoFirm = require('../models/avtofirm');
+
 var express = require('express'),
     router = express.Router(),
     path = require('path'),
@@ -10,24 +15,41 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/index', function(req, res, next) {
-    Car.findAll().then(data =>
-        {
-            console.log(data);
-            res.render("index", {title:"Главная"});
-        }).
-    catch(err => console.log(err));
+    res.render("index", {title:"Главная"});
+
 });
 
 
 //каталог
 router.get('/catalog', function(req, res) {
-    res.render("catalog", {title:"Каталог"});
+    Car.findAll({
+        include: [
+            {model: Superstructure},
+            {model: AvtoCategory},
+            {model: BaseAvto,
+                include:[AvtoFirm]}]
+    }).then(data =>
+    {
+        res.render("catalog", {title:"Каталог", cars: data});
+    }).
+    catch(err => console.log(err));
 });
 
 
 //админ-каталог
 router.get('/pageadmin', function(req, res) {
-    res.render("pageadmin", {title:"Admin-Каталог"});
+    Car.findAll({
+        include: [
+            {model: Superstructure},
+            {model: AvtoCategory},
+            {model: BaseAvto,
+                include:[AvtoFirm]}]
+    }).then(data =>
+    {
+        res.render("pageadmin", {title:"Admin-Каталог", cars: data});
+    }).
+    catch(err => console.log(err));
+
 });
 
 

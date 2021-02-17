@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = require("../config/db");
 
+const Car = require("./car");
 
 //Model Superstructure:
 //PK_Superstructure: primary key

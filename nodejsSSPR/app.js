@@ -3,8 +3,8 @@ const { EPIPE } = require("constants");
 var express = require("express"),
 app = express(),
 path = require("path"),
-mysql = require('mysql2');
-routes = require('./routes/routes')
+mysql = require('mysql2'),
+routes = require('./routes/routes');
 
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -15,7 +15,9 @@ app.set("views", path.join(__dirname, "views"));
 //connecting to database
 const db = require("./config/db");
 db.authenticate()
-	.then(() => console.log("DB successfully connected"))
+	.then(function() {
+		console.log("DB successfully connected");
+	})
 	.catch((err) => console.log(err));
 
 
