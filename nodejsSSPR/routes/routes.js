@@ -139,12 +139,10 @@ router.get('/updatecar_:id', async function(req,res) {
 router.post('/updatecar:id', upload.single('wallpaper'), async function(req,res) {
     if(req.body.pk_car)
     {
-        console.log(req.file.path);
         if(req.file)
             var pathInSystem = req.file.path.replace(/^public/, '');
         else
             var pathInSystem = "";
-        console.log(pathInSystem);
         await Car.update({
             yearissue: req.body.yearissue,
             price: req.body.price,
