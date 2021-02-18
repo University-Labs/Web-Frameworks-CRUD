@@ -7,7 +7,22 @@ var Car = require('../models/car'),
 var express = require('express'),
     router = express.Router(),
     path = require('path'),
-    ejs = require("ejs");
+    ejs = require("ejs"),
+    multer  = require('multer');
+
+//устснавливаем хранилище для изображений
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/products/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  }
+});
+
+//настраиваем загрузчик
+var upload = multer({ storage: storage });
+
 
 //главная страница
 router.get('/', function(req, res, next) {
@@ -75,14 +90,18 @@ router.get('/createcar', async function (req, res) {
 });
 
 
-router.post('/createcar', async function(req, res) {
+router.post('/createcar', upload.single('wallpaper'), async function(req, res) {
+    if(req.file)
+        var pathInSystem = req.file.path.replace(/^public/, '');
+    else
+        var pathInSystem = "";
     var obj = await Car.create({
         PK_BaseAvto : req.body.baseavto,
         PK_Superstructure : req.body.superstructure,
         PK_Category : req.body.category,
         yearissue : req.body.yearissue,
         price: req.body.price,
-        imagepath : req.body.imagepath,
+        imagepath : pathInSystem,
         description : req.body.description
     }).then(function (Cars) {
         if(!Cars)
@@ -117,13 +136,19 @@ router.get('/updatecar_:id', async function(req,res) {
     .catch(err => console.log(err));
 });
 
-router.post('/updatecar:id', async function(req,res) {
+router.post('/updatecar:id', upload.single('wallpaper'), async function(req,res) {
     if(req.body.pk_car)
     {
+        console.log(req.file.path);
+        if(req.file)
+            var pathInSystem = req.file.path.replace(/^public/, '');
+        else
+            var pathInSystem = "";
+        console.log(pathInSystem);
         await Car.update({
             yearissue: req.body.yearissue,
             price: req.body.price,
-            imagePath: req.body.imagepath,
+            imagepath: pathInSystem,
             description: req.body.description,
             PK_BaseAvto: req.body.baseavto,
             PK_Superstructure: req.body.superstructure,

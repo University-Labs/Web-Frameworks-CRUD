@@ -27,7 +27,7 @@
 
         <h1><%= title %></h1>
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
           <div class="form-group edit-fields">
             <input type="hidden" name="pk_car" value="<%= curObj.PK_Car %>" >
             <label for="baseavto">Модель базы</label>
@@ -78,7 +78,7 @@
 
           <div class="form-group edit-fields">
             <label for="imagePath">Фото</label>
-            <input name = "imagepath" type="file" class="chooseFile form-control-file" placeholder="Выберите фото" value= <%= curObj.imagepath %>>
+            <input name = "wallpaper" type="file" class="chooseFile form-control-file" placeholder="Выберите фото" value= <%= curObj.imagepath %>>
           </div>
 
           <div class="form-group edit-fields">
