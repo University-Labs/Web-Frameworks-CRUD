@@ -16,21 +16,36 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djangoapp import views
-from django.conf import settings # new
-from django.conf.urls.static import static # new
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
+    # админ страница сайта (стандартная для джанго)
     path('admin', admin.site.urls),
+
+    #главная страница
     path('', views.index, name="index"),
     path('index/', views.index, name="index1"),
+
+    #каталог для пользователя
     path('catalog/', views.catalog, name="catalog"),
+
+    #каталог для админа ( с удалением, добавлением, редактированием )
     path('pageadmin/', views.pageadmin, name="pageadmin"),
+
+    #подробности продукта carNumber
     path('productinfo_<int:carNumber>/', views.productinfo, name="productinfo"),
+
+    #удаление продукта carNumber
     path('erasecar_<int:carNumber>/', views.erasecar, name="erasecar"),
+
+    #создание нового продукта
     path('createcar/', views.createcar, name="createcar"),
+
+    #редактирование продукта carNumber
     path('editcar_<int:carNumber>/', views.editcar, name="editcar"),
 
 ]
-if settings.DEBUG: # new
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
