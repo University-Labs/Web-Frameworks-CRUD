@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\AvtoFirm;
+
 class CarController extends Controller
 {
     /**
@@ -30,7 +32,8 @@ class CarController extends Controller
     {
         return view('productinfo',
             [
-                'id' => $id
+                'id' => $id,
+                'firms' => AvtoFirm::all(),
             ]);
     }
 

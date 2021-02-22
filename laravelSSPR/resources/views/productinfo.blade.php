@@ -19,6 +19,9 @@
           </div>
         </div>
         <div class="model-info">
+          @foreach ($firms as $firm)
+            {{$firm->firmName}}
+          @endforeach
           <p>Производитель: Этот</p>
           <p>Модель: Эта</p>
           <p>Надстройка на авто: Та самая </p>
