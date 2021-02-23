@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\AvtoFirm;
+use App\Models\Car;
 
 class BaseAvto extends Model
 {
@@ -14,4 +16,15 @@ class BaseAvto extends Model
 
     //отключение полей updated_at, created_at
     public $timestamps = false;
+
+
+    public function avtoFirm()
+    {
+    	return $this->belongsTo(AvtoFirm::class, 'PK_AvtoFirm', 'PK_AvtoFirm');
+    }
+
+    public function car()
+    {
+    	return $this->hasMany(Car::class, 'PK_AvtoFirm', 'PK_AvtoFirm');
+    }
 }

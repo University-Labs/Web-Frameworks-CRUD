@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseAvto;
+use App\Models\Superstructure;
+use App\Models\AvtoCategory;
+
 
 class Car extends Model
 {
@@ -14,4 +18,21 @@ class Car extends Model
 
     //отключение полей updated_at, created_at
     public $timestamps = false;
+
+
+    public function baseAvto()
+    {
+    	return $this->belongsTo(BaseAvto::class, 'PK_BaseAvto', 'PK_BaseAvto');
+    }
+
+    public function avtoCategory()
+    {
+    	return $this->belongsTo(AvtoCategory::class, 'PK_Category', 'PK_Category');
+    }
+
+    public function superstructure()
+    {
+    	return $this->belongsTo(Superstructure::class, 'PK_Superstructure', 'PK_Superstructure');
+    }
+
 }

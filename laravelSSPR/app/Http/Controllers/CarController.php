@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\AvtoFirm;
+use App\Models\Car;
 
 class CarController extends Controller
 {
@@ -20,7 +21,10 @@ class CarController extends Controller
 
     public function catalog()
     {
-        return view('catalog');
+        return view('catalog',
+            [
+                'cars' => Car::all()
+            ]);
     }
 
     public function pageadmin()
@@ -33,7 +37,7 @@ class CarController extends Controller
         return view('productinfo',
             [
                 'id' => $id,
-                'firms' => AvtoFirm::all(),
+                'firms' => AvtoFirm::all()
             ]);
     }
 
