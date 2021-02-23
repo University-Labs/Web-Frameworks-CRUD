@@ -15,12 +15,12 @@ use App\Http\Controllers\CarController;
 |
 */
 
-Route::get('/', [CarController::class, 'index']);
+Route::get('/', [CarController::class, 'index'])->name('index');
 
-Route::get('/index', [CarController::class, 'index']);
+Route::get('/catalog', [CarController::class, 'catalog'])->name('catalog');
 
-Route::get('/catalog', [CarController::class, 'catalog']);
+Route::get('/pageadmin', [CarController::class, 'pageadmin'])->name('cars.list');
 
-Route::get('/pageadmin', [CarController::class, 'pageadmin']);
+Route::get('/productinfo_{id}', [CarController::class, 'productinfo'])->name('cars.read');
 
-Route::get('/productinfo_{id}', [CarController::class, 'productinfo']);
+Route::delete('/deletecar_{id}', [CarController::class, 'deleteCar'])->name('cars.delete');

@@ -8,26 +8,27 @@
 
   <main id="content">
     <div class="container">
-      <h1>Информация о модели: {{ $id }}
+      <h1>Информация о модели: {{ $singleCar->superstructure->superstructureName }}
       на шасси
-      {{ $id }}</h1>
+      {{ $singleCar->baseAvto->modelName }} - {{ $singleCar->baseAvto->avtoFirm->firmName }}</h1>
       <div class="feature">
-        <h5>Категория: {{$id}}</h5>
+        <h5>Категория: {{ $singleCar->avtoCategory->nameCategory }}</h5>
         <div class="col">
           <div class="col-lg-4">
-            <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+            @if ($singleCar->imagePath)
+              <img src="{{$singleCar->imagePath}}" class="card-img-top" alt="No image">
+            @else
+              <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+            @endif
           </div>
         </div>
         <div class="model-info">
-          @foreach ($firms as $firm)
-            {{$firm->firmName}}
-          @endforeach
-          <p>Производитель: Этот</p>
-          <p>Модель: Эта</p>
-          <p>Надстройка на авто: Та самая </p>
-          <p>Цена: Отсутствует руб.</p>
-          <p>Год выпуска: 0 </p>
-          <p>Описание: -
+          <p>Производитель: {{ $singleCar->baseAvto->avtoFirm->firmName }}</p>
+          <p>Модель: {{ $singleCar->baseAvto->modelName }}</p>
+          <p>Надстройка на авто: {{ $singleCar->superstructure->superstructureName }} </p>
+          <p>Цена: {{ $singleCar->price }} руб.</p>
+          <p>Год выпуска: {{ $singleCar->yearIssue }} </p>
+          <p>Описание: {{ $singleCar->description }}
           </p>
         </div>
       </div>

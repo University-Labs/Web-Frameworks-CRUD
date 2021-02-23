@@ -1,7 +1,7 @@
 <header id="header" class="fixed-top">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a href="index" class="navbar-brand">Спец. техника</a>
+          <a href="/" class="navbar-brand">Спец. техника</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
             aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
           <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a href="index" class="nav-link">Главная</a>
+                <a href="/" class="nav-link">Главная</a>
               </li>
 
               <li class="nav-item">

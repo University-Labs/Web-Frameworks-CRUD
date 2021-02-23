@@ -27,7 +27,7 @@
                   <div class="card-body">
                     <h5>{{$car->superstructure->superstructureName}}
                       на шасси
-                      {{$car->baseAvto->modelName}} - {{$car->baseAvto->avtoFirm->firmName}}</h5>
+                      {{$car->baseAvto->avtoFirm->firmName}} - {{$car->baseAvto->modelName}}</h5>
                     <p>Цена: {{$car->price}} руб.</p>
                     <p>Надстройка: {{$car->superstructure->superstructureName}} </p>
                     <p>Год выпуска: {{$car->yearIssue}}</p>

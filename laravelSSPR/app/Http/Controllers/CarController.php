@@ -29,16 +29,31 @@ class CarController extends Controller
 
     public function pageadmin()
     {
-        return view('pageadmin');
+        return view('pageadmin',
+            [
+                'cars' => Car::all()
+            ]);
     }
 
     public function productinfo($id)
     {
         return view('productinfo',
             [
-                'id' => $id,
-                'firms' => AvtoFirm::all()
+                'singleCar' => Car::find($id)
             ]);
+    }
+
+
+    public function deletecar($id)
+    {
+        $deletingCar = Car::find($id);
+
+        if($deletingCar)
+        {
+            $deletingCar->delete();
+        }
+
+        return redirect()->route('cars.list');
     }
 
 }

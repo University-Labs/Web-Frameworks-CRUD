@@ -15,35 +15,41 @@
 
       <div class="row">
 
-
+        @foreach ($cars as $car)
           <div class="col-lg-3 col-md-6">
             <div class="card single-car-item h-100">
-              <a href="productinfo_11">
-                <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+              <a href="productinfo_{{$car->PK_Car}}">
 
-                <div class="card-body">
-                    <h5>Машина
+                  @if ($car->imagePath)
+                    <img src="{{$car->imagePath}}" class="card-img-top" alt="No image">
+                  @else
+                    <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+                  @endif
+
+                  <div class="card-body">
+                    <h5>{{$car->superstructure->superstructureName}}
                       на шасси
-                      Надстройки</h5>
-                    <p>Цена: Дорого руб.</p>
-                    <p>Надстройка: Нет </p>
-                    <p>Год выпуска: 0</p>
-                </div>
-              </a>
+                      {{$car->baseAvto->avtoFirm->firmName}} - {{$car->baseAvto->modelName}}</h5>
+                    <p>Цена: {{$car->price}} руб.</p>
+                    <p>Надстройка: {{$car->superstructure->superstructureName}} </p>
+                    <p>Год выпуска: {{$car->yearIssue}}</p>
+                  </div>
+                </a>
               <div class="card-footer mt-auto">
                 <!-- Админские кнопки редактирования и удаления -->
                   <a class="btn btn-warning edit" href="updatecar_" role="button">Изменить</a>
 
-                <form method="POST" action="delete_">
+                <form method="POST" action="deletecar_{{ $car->PK_Car }}">
+                  @method('DELETE')
+                  @csrf
                   <button type="submit" class="btn btn-warning edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>
                 </form>
               </div>
             </div>
           </div>
-
+        @endforeach
 
       </div>
-
     </div>
   </main>
 
