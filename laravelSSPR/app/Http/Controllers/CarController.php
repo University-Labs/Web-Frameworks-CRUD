@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\AvtoFirm;
 use App\Models\Car;
@@ -73,8 +75,17 @@ class CarController extends Controller
     //метод добавления (create)
     public function storecar(Request $req)
     {
+        //заполнение данными
         $data = $req->all();
         $newCar = new Car($data);
+
+        //запись файла
+        if($req->file('image'))
+        {
+            $imagePath = $req->file('image')->store('uploads', 'public');
+
+            $newCar->imagePath = $imagePath;
+        }
 
         $newCar->save();
 
@@ -115,9 +126,17 @@ class CarController extends Controller
         }
 
         $data = $req->all();
-        $result = $editCar
-                    ->fill($data)
-                    ->save();
+        $result = $editCar->fill($data);
+
+        //запись файла
+        if($req->file('image') != "")
+        {
+            $imagePath = $req->file('image')->store('uploads', 'public');
+
+            $result->imagePath = $imagePath;
+        }
+
+        $result->save();
 
         if($result)
             return redirect()->route('cars.list');

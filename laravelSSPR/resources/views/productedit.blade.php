@@ -86,8 +86,8 @@
           </div>
 
           <div class="form-group edit-fields">
-            <label for="imagePath">Фото</label>
-            <input name = "imagePath" type="file" class="chooseFile form-control-file" placeholder="Выберите фото" value= "{{ $curCar->imagePath }}">
+            <label for="image">Фото</label>
+            <input name = "image" type="file" class="chooseFile form-control-file" placeholder="Выберите фото" value= "{{ $curCar->imagePath }}">
           </div>
 
           <div class="form-group edit-fields">

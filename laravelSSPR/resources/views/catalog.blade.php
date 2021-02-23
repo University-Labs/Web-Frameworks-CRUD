@@ -19,7 +19,7 @@
                 <a href="productinfo_{{$car->PK_Car}}">
 
                   @if ($car->imagePath)
-                    <img src="{{$car->imagePath}}" class="card-img-top" alt="No image">
+                    <img src="{{asset('/storage/' . $car->imagePath)}}" class="card-img-top" alt="No image">
                   @else
                     <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
                   @endif
