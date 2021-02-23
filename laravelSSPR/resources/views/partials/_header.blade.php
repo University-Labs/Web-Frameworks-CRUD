@@ -27,7 +27,6 @@
                 <a href="#" class="nav-item nav-link">Регистрация</a>
             </div>
 
-
           </div>
         </div>
       </nav>

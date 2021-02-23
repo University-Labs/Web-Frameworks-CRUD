@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\AvtoFirm;
 use App\Models\Car;
+use App\Models\AvtoCategory;
+use App\Models\Superstructure;
+use App\Models\BaseAvto;
 
 class CarController extends Controller
 {
@@ -19,6 +22,7 @@ class CarController extends Controller
         return view('index');
     }
 
+    //каталог всех продуктов
     public function catalog()
     {
         return view('catalog',
@@ -27,6 +31,7 @@ class CarController extends Controller
             ]);
     }
 
+    //просмотр продуктов администратором
     public function pageadmin()
     {
         return view('pageadmin',
@@ -35,6 +40,8 @@ class CarController extends Controller
             ]);
     }
 
+
+    //подробности конкретного продукта
     public function productinfo($id)
     {
         return view('productinfo',
@@ -44,6 +51,82 @@ class CarController extends Controller
     }
 
 
+    //метод рендеринга формы для добавления
+    public function createcar()
+    {
+        $newCar = new Car();
+
+        //получаем опции для селектов
+        $categories = AvtoCategory::all();
+        $superstructures = Superstructure::all();
+        $baseavtos = BaseAvto::all();
+
+        return view('productedit',
+        [
+            'curCar' => $newCar,
+            'categories' => $categories,
+            'superstructures' => $superstructures,
+            'baseavtos' => $baseavtos,
+        ]);
+    }
+
+    //метод добавления (create)
+    public function storecar(Request $req)
+    {
+        $data = $req->all();
+        $newCar = new Car($data);
+
+        $newCar->save();
+
+        if ($newCar)
+            return redirect()->route('cars.list');
+        else
+            return back()->withErrors(['msg' => "Ошибка создания объекта"])->withInput();
+    }
+
+
+    //метод рендеринга формы для редактирования
+    public function editcar($id)
+    {
+        $curCar = Car::find($id);
+
+        //получаем опции для селектов
+        $categories = AvtoCategory::all();
+        $superstructures = Superstructure::all();
+        $baseavtos = BaseAvto::all();
+
+        return view('productedit',
+        [
+            'curCar' => $curCar,
+            'categories' => $categories,
+            'superstructures' => $superstructures,
+            'baseavtos' => $baseavtos,
+        ]);
+    }
+
+    //метод редактирования (update)
+    public function updatecar(Request $req, $id)
+    {
+        $editCar = Car::find($id);
+
+        if(empty($editCar))
+        {
+            return back()->withErrors(['msg' => "Ошибка, запись не найдена"])->withInput();
+        }
+
+        $data = $req->all();
+        $result = $editCar
+                    ->fill($data)
+                    ->save();
+
+        if($result)
+            return redirect()->route('cars.list');
+        else
+            return back()->withErrors(['msg' => "Ошибка, запись не была изменена"])->withInput();
+    }
+
+
+    //метод удаления (delete)
     public function deletecar($id)
     {
         $deletingCar = Car::find($id);

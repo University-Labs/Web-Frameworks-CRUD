@@ -19,6 +19,16 @@ class Car extends Model
     //отключение полей updated_at, created_at
     public $timestamps = false;
 
+    protected $fillable = [
+        'PK_BaseAvto',
+        'PK_Superstructure',
+        'PK_Category',
+        'price',
+        'yearIssue',
+        'description',
+        'imagePath',
+    ];
+
 
     public function baseAvto()
     {

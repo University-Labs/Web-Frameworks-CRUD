@@ -24,3 +24,11 @@ Route::get('/pageadmin', [CarController::class, 'pageadmin'])->name('cars.list')
 Route::get('/productinfo_{id}', [CarController::class, 'productinfo'])->name('cars.read');
 
 Route::delete('/deletecar_{id}', [CarController::class, 'deleteCar'])->name('cars.delete');
+
+Route::get('createcar', [CarController::class, 'createcar'])->name('cars.create');
+
+Route::post('createcar', [CarController::class, 'storecar'])->name('cars.store');
+
+Route::get('editcar_{id}', [CarController::class, 'editcar'])->name('cars.edit');
+
+Route::post('updatecar_{id}', [CarController::class, 'updatecar'])->name('cars.update');

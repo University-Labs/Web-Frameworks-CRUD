@@ -37,7 +37,7 @@
                 </a>
               <div class="card-footer mt-auto">
                 <!-- Админские кнопки редактирования и удаления -->
-                  <a class="btn btn-warning edit" href="updatecar_" role="button">Изменить</a>
+                  <a class="btn btn-warning edit" href="editcar_{{ $car->PK_Car }}" role="button">Изменить</a>
 
                 <form method="POST" action="deletecar_{{ $car->PK_Car }}">
                   @method('DELETE')

@@ -1,89 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><%= title %></title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+@extends('layouts.layout')
 
-    <!-- Подключаем шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+@section('title')
+  @if ($curCar->exists)
+    Редактирование Автомобиля
+  @else
+    Новый Автомобиль
+  @endif
+@endsection
 
-  </head>
-  <body>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/functions.js"></script>
 
-    <%- include("partials/_header.ejs") %>
+
+@section('content')
 
     <main id="content">
       <div class="container">
 
-        <h1><%= title %></h1>
+        @if ($curCar->exists)
+          <form method="POST" action="{{ route('cars.update', $curCar->PK_Car) }}" enctype="multipart/form-data">
+        @else
+          <form method="POST" action="{{ route('cars.store') }}" enctype="multipart/form-data">
+        @endif
+        @csrf
 
-        <form method="POST" enctype="multipart/form-data">
+          @if ($errors->any())
+          <div class="row justify-content-center">
+            <div class="col-md-11">
+              <div class="alert alert-danger" role="alert">
+                {{ $errors->first() }}
+              </div>
+            </div>
+          </div>
+          @endif
+
           <div class="form-group edit-fields">
-            <input type="hidden" name="pk_car" value="<%= curObj.PK_Car %>" >
-            <label for="baseavto">Модель базы</label>
-            <select required name="baseavto" type="text" class="form-control" placeholder="Укажите название модели">
-              <%for(var i = 0; i < bases.length; i++) {%>
 
-              <option <% if (bases[i].PK_BaseAvto == curObj.PK_BaseAvto) {%> selected <% } %>
-                        id = "PK_BaseAvto" name="PK_BaseAvto" value="<%= bases[i].PK_BaseAvto %>">
-                <%= bases[i].AvtoFirm.firmName %> - <%= bases[i].modelName %>
+            <label for="PK_BaseAvto">Модель базы</label>
+            <select required name="PK_BaseAvto" type="text" class="form-control" placeholder="Укажите название модели">
+              @foreach ($baseavtos as $baseavto)
+              <option @if ($baseavto->PK_BaseAvto == $curCar->PK_BaseAvto) selected @endif
+                        id = "BaseAvtoPK" name="BaseAvtoPK" value="{{ $baseavto->PK_BaseAvto }}">
+                {{ $baseavto->avtoFirm->firmName }} - {{ $baseavto->modelName }}
               </option>
-              <% } %>
+              @endforeach
             </select>
+
           </div>
 
           <div class="form-group edit-fields">
-            <label for="superstructure">Надстройка</label>
-            <select required name="superstructure" type="text" class="form-control" placeholder="Выберите надстройку">
-              <%for(var i = 0; i < superstructures.length; i++) {%>
-              <option <% if (superstructures[i].PK_Superstructure == curObj.PK_Superstructure) {%> selected <% } %>
-                        id = "PK_Superstructure" name="PK_Superstructure" value="<%= superstructures[i].PK_Superstructure %>">
-                <%= superstructures[i].superstructureName %>
+
+            <label for="PK_Superstructure">Надстройка</label>
+            <select required name="PK_Superstructure" type="text" class="form-control" placeholder="Выберите надстройку">
+              @foreach ($superstructures as $superstructure)
+              <option @if ($superstructure->PK_Superstructure == $curCar->PK_Superstructure) selected @endif
+                        id = "SuperstructurePK" name="SuperstructurePK" value="{{ $superstructure->PK_Superstructure }}">
+                {{ $superstructure->superstructureName }}
               </option>
-              <% } %>
+              @endforeach
             </select>
+
           </div>
 
           <div class="form-group edit-fields">
-            <label for="category">Категория</label>
-            <select required name="category" type="text" class="form-control" placeholder="Выберите категорию">
-              <%for(var i = 0; i < categories.length; i++) {%>
-              <option <% if (categories[i].PK_Category == curObj.PK_Category) {%> selected <% } %>
-                        id = "PK_Category" name="PK_Category" value="<%= categories[i].PK_Category %>">
-                <%= categories[i].nameCategory %>
+
+            <label for="PK_Category">Категория</label>
+            <select required name="PK_Category" type="text" class="form-control" placeholder="Выберите категорию">
+              @foreach ($categories as $category)
+              <option @if ( $category->PK_Category == $curCar->PK_Category ) selected @endif
+                        id = "CategoryPK" name="CategoryPK" value=" {{ $category->PK_Category }} ">
+                {{ $category->nameCategory }}
               </option>
-              <% } %>
+              @endforeach
             </select>
+
           </div>
 
           <div class="form-group edit-fields">
             <label for="price">Цена</label>
-            <input required name="price" type="number" class="form-control" placeholder="Укажите цену" value= <%= curObj.price %>>
+            <input required name="price" type="number" class="form-control" placeholder="Укажите цену" value= "{{ old( 'price', $curCar->price) }}">
           </div>
 
           <div class="form-group edit-fields">
             <label for="yearissue">Год производства</label>
-            <input required name="yearissue" type="number" class="form-control" placeholder="Введите год" value= <%= curObj.yearissue %>>
+            <input required name="yearIssue" type="number" class="form-control" placeholder="Введите год" value= "{{ old('yearIssue', $curCar->yearIssue) }}">
           </div>
 
           <div class="form-group edit-fields">
             <label for="imagePath">Фото</label>
-            <input name = "wallpaper" type="file" class="chooseFile form-control-file" placeholder="Выберите фото" value= <%= curObj.imagepath %>>
+            <input name = "imagePath" type="file" class="chooseFile form-control-file" placeholder="Выберите фото" value= "{{ $curCar->imagePath }}">
           </div>
 
           <div class="form-group edit-fields">
             <label for="description">Описание</label>
-            <textarea class="description form-control" name="description"><%= curObj.description %></textarea></p>
+            <textarea class="description form-control" name="description">{{ old('description', $curCar->description) }}</textarea></p>
           </div>
 
 
@@ -96,9 +105,4 @@
       </div>
     </main>
 
-
-    <%- include("partials/_footer.ejs") %>
-
-
-  </body>
-</html>
+@endsection
