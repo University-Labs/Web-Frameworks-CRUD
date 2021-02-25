@@ -16,7 +16,7 @@
       <div class="row">
 
         @foreach ($cars as $car)
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-3 col-md-6" id="car_{{ $car->PK_Car }}">
             <div class="card single-car-item h-100">
               <a href="productinfo_{{$car->PK_Car}}">
 
@@ -44,6 +44,8 @@
                   @csrf
                   <button type="submit" class="btn btn-warning edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>
                 </form>
+
+                <a href="" class="btn btn-warning btn-erase" data-pkcar="{{ $car->PK_Car }}">EraseAJAX </a>
               </div>
             </div>
           </div>
