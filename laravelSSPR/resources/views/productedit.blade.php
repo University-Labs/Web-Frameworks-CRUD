@@ -21,7 +21,7 @@
         <h1>Новый Автомобиль</h1>
       @endif
         @if ($curCar->exists)
-          <form method="POST" action="{{ route('cars.update', $curCar->PK_Car) }}" enctype="multipart/form-data" id="formUpdate">
+          <form method="POST" action="{{ route('cars.update', $curCar->PK_Car) }}" enctype="multipart/form-data">
         @else
           <form method="POST" action="{{ route('cars.store') }}" enctype="multipart/form-data" id="formStore">
         @endif
