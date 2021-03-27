@@ -45,7 +45,6 @@
                   <button type="submit" class="btn btn-warning edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>
                 </form>
 
-                <a href="" class="btn btn-warning btn-erase" data-pkcar="{{ $car->PK_Car }}">EraseAJAX </a>
               </div>
             </div>
           </div>

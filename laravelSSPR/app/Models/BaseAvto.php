@@ -17,6 +17,10 @@ class BaseAvto extends Model
     //отключение полей updated_at, created_at
     public $timestamps = false;
 
+    protected $fillable = [
+        'modelName',
+        'PK_AvtoFirm'
+    ];
 
     public function avtoFirm()
     {

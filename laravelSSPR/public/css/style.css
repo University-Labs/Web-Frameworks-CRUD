@@ -8,6 +8,10 @@ html{
 	padding-bottom: 70px;
 }
 
+.edit-btn{
+	height: 40px;
+}
+
 #content p{
 	font-family: 'Oswald', sans-serif;
 }

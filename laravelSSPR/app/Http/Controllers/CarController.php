@@ -90,17 +90,9 @@ class CarController extends Controller
         $newCar->save();
 
         if ($newCar)
-            return response()->json([
-                "status" => '1',
-                "PK_Car" => $newCar->PK_Car,
-            ]);
-            //return redirect()->route('cars.list');
+            return redirect()->route('cars.list');
         else
-            return response()->json([
-                "status" => '0',
-                "message" => 'Ошибка создания объекта!'
-            ]);
-            //return back()->withErrors(['msg' => "Ошибка создания объекта"])->withInput();
+            return back()->withErrors(['msg' => "Ошибка создания объекта"])->withInput();
     }
 
 
@@ -164,46 +156,6 @@ class CarController extends Controller
         }
 
         return redirect()->route('cars.list');
-    }
-
-
-    public function erasecar(Request $req)
-    {
-        //ищим модель и удаляем ее,
-        //возвращаем ответ в json
-        $deletingCar = Car::find($req->get("PK_Car"));
-        if($deletingCar == null)
-            return response()->json(['name' => 'Failed To Delete! Model is not exist', 'status' => '0']);
-        else
-        {
-            $deletingCar->delete();
-            return response()->json(['name' => 'Успешно удалено!', 'status' => '1']);
-        }
-    }
-
-
-    public function previewcar($id)
-    {
-        $searchingCar = Car::find($id);
-
-        if($searchingCar)
-        {
-            return response()->json([
-                'status' => '1',
-                'pk_car' => $searchingCar->PK_Car,
-                'modelName' => $searchingCar->baseAvto->avtoFirm->firmName . " - " . $searchingCar->baseAvto->modelName,
-                'superstructure' => $searchingCar->superstructure->superstructureName,
-                'category' => $searchingCar->avtoCategory->nameCategory,
-                'price' => $searchingCar->price,
-                'year' => $searchingCar->yearIssue,
-                'description' => $searchingCar->description,
-            ]);
-        }
-        else
-            return response()->json([
-                'status' => '0',
-                'info' => 'Failed to load model',
-            ]);
     }
 
 }
