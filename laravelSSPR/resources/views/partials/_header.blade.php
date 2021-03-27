@@ -20,6 +20,18 @@
               <li class="nav-item">
                 <a href="pageadmin" class="nav-link">Режим администратора</a>
               </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dictionarities" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Справочники
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dictionarities">
+                  <li class="nav-item"><a class="dropdown-item" href="avtocategorylist">Категории</a></li>
+                  <li class="nav-item"><a class="dropdown-item" href="superstructurelist">Надстройки</a></li>
+                  <li class="nav-item"><a class="dropdown-item" href="baseavtolist">База авто</a></li>
+                  <li class="nav-item"><a class="dropdown-item" href="avtofirmlist">Фирмы авто</a></li>
+                </ul>
+              </li>
             </ul>
 
             <div class="navbar-nav ms-auto">
