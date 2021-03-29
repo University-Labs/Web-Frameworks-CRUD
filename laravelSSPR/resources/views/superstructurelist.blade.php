@@ -5,6 +5,8 @@
 	Надстройки
 @endsection
 
+@section('content')
+
 <main id="content">
 	<div class="container">
 		<h1>Список Надстроек</h1>
@@ -49,3 +51,5 @@
 	</div>
 	</div>
 </main>
+
+@endsection

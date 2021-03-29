@@ -5,6 +5,7 @@
 	База спецтехники
 @endsection
 
+@section('content')
 <main id="content">
 	<div class="container">
 		<h1>Список баз для спецтехники</h1>
@@ -51,3 +52,5 @@
 	</div>
 	</div>
 </main>
+
+@endsection

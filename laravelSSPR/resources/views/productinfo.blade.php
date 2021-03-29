@@ -8,9 +8,7 @@
 
   <main id="content">
     <div class="container">
-      <h1>Информация о модели: {{ $singleCar->superstructure->superstructureName }}
-      на шасси
-      {{ $singleCar->baseAvto->modelName }} - {{ $singleCar->baseAvto->avtoFirm->firmName }}</h1>
+      <h1>Информация о модели: {{ $singleCar->superstructure->superstructureName }} на шасси {{$singleCar->baseAvto->avtoFirm->firmName }} - {{ $singleCar->baseAvto->modelName }}</h1>
       <div class="feature">
         <h5>Категория: {{ $singleCar->avtoCategory->nameCategory }}</h5>
         <div class="col">
@@ -23,12 +21,12 @@
           </div>
         </div>
         <div class="model-info">
-          <p>Производитель: {{ $singleCar->baseAvto->avtoFirm->firmName }}</p>
-          <p>Модель: {{ $singleCar->baseAvto->modelName }}</p>
-          <p>Надстройка на авто: {{ $singleCar->superstructure->superstructureName }} </p>
-          <p>Цена: {{ $singleCar->price }} руб.</p>
-          <p>Год выпуска: {{ $singleCar->yearIssue }} </p>
-          <p>Описание: {{ $singleCar->description }}
+          <p class="firm">Производитель: {{ $singleCar->baseAvto->avtoFirm->firmName }}</p>
+          <p class="model">Модель: {{ $singleCar->baseAvto->modelName }}</p>
+          <p class="superstructure">Надстройка на авто: {{ $singleCar->superstructure->superstructureName }} </p>
+          <p class="price">Цена: {{ $singleCar->price }} руб.</p>
+          <p class="year">Год выпуска: {{ $singleCar->yearIssue }} </p>
+          <p class="description">Описание: {{ $singleCar->description }}
           </p>
         </div>
       </div>

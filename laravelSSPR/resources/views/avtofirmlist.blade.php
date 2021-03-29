@@ -5,6 +5,8 @@
 	Автомобильные фирмы
 @endsection
 
+@section('content')
+
 <main id="content">
 	<div class="container">
 		<h1>Список Фирм авто</h1>
@@ -49,3 +51,5 @@
 	</div>
 	</div>
 </main>
+
+@endsection

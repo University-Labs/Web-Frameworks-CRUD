@@ -5,6 +5,8 @@
 	Категории авто
 @endsection
 
+@section('content')
+
 <main id="content">
 	<div class="container">
 		<h1>Список категорий авто</h1>
@@ -49,3 +51,5 @@
 	</div>
 	</div>
 </main>
+
+@endsection

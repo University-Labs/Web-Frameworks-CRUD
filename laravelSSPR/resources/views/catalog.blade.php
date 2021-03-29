@@ -25,12 +25,10 @@
                   @endif
 
                   <div class="card-body">
-                    <h5>{{$car->superstructure->superstructureName}}
-                      на шасси
-                      {{$car->baseAvto->avtoFirm->firmName}} - {{$car->baseAvto->modelName}}</h5>
-                    <p>Цена: {{$car->price}} руб.</p>
-                    <p>Надстройка: {{$car->superstructure->superstructureName}} </p>
-                    <p>Год выпуска: {{$car->yearIssue}}</p>
+                    <h5 class="carName">{{$car->superstructure->superstructureName}} на шасси {{$car->baseAvto->avtoFirm->firmName}} - {{$car->baseAvto->modelName}}</h5>
+                    <p class="price">Цена: {{$car->price}} руб.</p>
+                    <p class="superstructure">Надстройка: {{$car->superstructure->superstructureName}} </p>
+                    <p class="year">Год выпуска: {{$car->yearIssue}}</p>
                   </div>
                 </a>
               </div>
