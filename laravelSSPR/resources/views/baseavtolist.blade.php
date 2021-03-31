@@ -11,7 +11,7 @@
 		<h1>Список баз для спецтехники</h1>
 
       	<div class="add-car-button">
-        	<a class="btn btn-primary" href="baseavtocreate" role="button">Добавить</a>
+        	<a class="btn btn-primary" id="add-baseavto-btn" href="baseavtocreate" role="button">Добавить</a>
       	</div>
 
 	<table class="table table-bordered mb-5">
