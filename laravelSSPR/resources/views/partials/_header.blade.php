@@ -35,8 +35,20 @@
             </ul>
 
             <div class="navbar-nav ms-auto">
-                <a href="#" class="nav-item nav-link">Вход</a>
-                <a href="#" class="nav-item nav-link">Регистрация</a>
+              @if (Route::has('login'))
+                    @auth
+                      <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit"> <a href="" class="nav-item nav-link">Выход</a></button>
+                      </form>
+                    @else
+                        <a href="{{ route('login') }}" class="nav-item nav-link">Вход</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="nav-item nav-link">Регистрация</a>
+                        @endif
+                    @endauth
+              @endif
             </div>
 
           </div>

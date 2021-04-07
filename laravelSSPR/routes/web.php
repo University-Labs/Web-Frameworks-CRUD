@@ -67,3 +67,5 @@ Route::post('/avtofirmcreate', [AvtofirmController::class, 'storeavtofirm'])->na
 Route::delete('/avtofirmdelete_{id}', [AvtofirmController::class, 'deleteavtofirm'])->name('avtofirms.delete');
 Route::get('/avtofirmedit_{id}', [AvtofirmController::class, 'avtofirmedit'])->name('avtofirms.edit');
 Route::post('/avtofirmupdate_{id}', [AvtofirmController::class, 'updateavtofirm'])->name('avtofirms.update');
+
+require __DIR__.'/auth.php';
