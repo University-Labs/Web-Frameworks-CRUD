@@ -21,9 +21,9 @@ class CreateCarTable extends Migration
                 $table->decimal('price', $precision = 15, $scale = 2 );
                 $table->string('imagePath', 255)->nullable();
                 $table->text('description')->nullable();
-                $table->foreignId('PK_BaseAvto')->constrained('baseavto');
-                $table->foreignId('PK_Superstructure')->constrained('superstructure');
-                $table->foreignId('PK_Category')->constrained('avtocategory')->nullable();
+                $table->foreignId('PK_BaseAvto')->references('PK_BaseAvto')->on('baseavto')->onDelete('restrict');
+                $table->foreignId('PK_Superstructure')->references('PK_Superstructure')->on('superstructure')->onDelete('restrict');
+                $table->foreignId('PK_Category')->references('PK_Category')->on('avtocategory')->onDelete('restrict')->nullable();
             });
         }
     }

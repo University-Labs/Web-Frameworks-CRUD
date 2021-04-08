@@ -10,11 +10,15 @@
         <div class="container">
             <div class="login-block">
                 <h1>Вход </h1>
+
+                <!-- Validation Errors -->
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
                 <form method="POST" class="login-form" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="email"> Логин </label>
-                        <input id="email" class="form-control" type="text" name="email" value="{{ old('email') }}" placeholder="Логин" required autofocus>
+                        <label for="username"> Логин </label>
+                        <input id="username" class="form-control" type="text" name="username" value="{{ old('username') }}"
+                            placeholder="Логин" required autofocus>
                     </div>
                     <div class="form-group">
                         <label for="password"> Пароль </label>

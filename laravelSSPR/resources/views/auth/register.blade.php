@@ -9,13 +9,16 @@
         <div class="container">
             <div class="register-block">
                 <h1>Регистрация </h1>
+                <!-- Validation Errors -->
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
                 <form method="POST" class="register-form" action="{{ route('register') }}">
                     @csrf
 
                     <div class="form-group row">
-                        <label for="name" class="col-form-label col-sm-3"> Логин </label>
+                        <label for="username" class="col-form-label col-sm-3"> Логин </label>
                         <div class="col-sm-9">
-                            <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" required autofocus >
+                            <input id="username" class="form-control" type="text" name="username" value="{{ old('username') }}" required autofocus >
                         </div>
                     </div>
 
