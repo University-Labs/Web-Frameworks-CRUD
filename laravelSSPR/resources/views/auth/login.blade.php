@@ -13,8 +13,14 @@
 
                 <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
                 <form method="POST" class="login-form" action="{{ route('login') }}">
                     @csrf
+
+                    <div class="font-medium text-sm text-success">
+                        {{ session('status') }}
+                    </div>
+
                     <div class="form-group">
                         <label for="username"> Логин </label>
                         <input id="username" class="form-control" type="text" name="username" value="{{ old('username') }}"

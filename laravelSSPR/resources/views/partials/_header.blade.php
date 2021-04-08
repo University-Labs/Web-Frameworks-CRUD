@@ -37,9 +37,16 @@
             <div class="navbar-nav ms-auto">
               @if (Route::has('login'))
                     @auth
-                      <form method="POST" action="{{ route('logout') }}">
+                      <form method="POST" class="row" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit"> <a href="" class="nav-item nav-link">Выход</a></button>
+                        <div class="col">
+                          <a id="userLink" class="nav-link nav-item" href="mypage">
+                            {{ Auth::user()->username }}
+                          </a>
+                        </div>
+                        <div class="col">
+                          <button type="submit" class="btn nav-item nav-link">Выход</button>
+                        </div>
                       </form>
                     @else
                         <a href="{{ route('login') }}" class="nav-item nav-link">Вход</a>

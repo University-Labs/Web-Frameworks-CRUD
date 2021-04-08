@@ -9,8 +9,8 @@
     <title> @yield('title') </title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- Подключаем шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
@@ -18,9 +18,9 @@
 
   </head>
   <body>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/functions.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 
     @include('partials/_header')
 

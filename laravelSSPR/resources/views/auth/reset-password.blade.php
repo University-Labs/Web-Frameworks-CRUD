@@ -8,33 +8,42 @@
     <main id="content">
       <div class="container">
         <h1> Сброс пароля </h1>
+        @if ($errors->any())
+            <div class="font-medium text-sm text-danger">
+                {{ $errors->first() }}
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
 
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <div class="row mb-3">
+                <!-- Password Reset Token -->
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <!-- Email Address -->
-            <div>
-                <label for="email"> Email </label>
-                <input id="email" class="block" type="email" name="email" value=" {{ old('email', $request->email) }} " required autofocus>
-            </div>
+                <!-- Email Address -->
+                <div class="form-group">
+                    <label for="email"> Email </label>
+                    <input id="email" class="form-control" type="email" name="email" value=" {{ old('email', $request->email) }} " required autofocus>
+                </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <label for="password"> Password </label>
-                <input id="password" class="block" type="password" name="password" required>
-            </div>
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password"> Новый пароль </label>
+                    <input id="password" class="form-control" type="password" name="password" required>
+                </div>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <label for="password_confirmation"> Confirm Password </label>
-                <input id="password_confirmation" class="block" type="password" name="password_confirmation" required>
-            </div>
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="password_confirmation"> Подтвердите пароль </label>
+                    <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required>
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <button type="submit" class="btn btn-warning"> Reset Password </button>
             </div>
+                <div>
+                    <button type="submit" class="btn btn-warning"> Сбросить пароль </button>
+                </div>
+
         </form>
       </div>
     </main>

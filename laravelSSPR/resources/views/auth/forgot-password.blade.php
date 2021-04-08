@@ -12,6 +12,17 @@
                     Забыли пароль? Введите почту и вам будет отправлена ссылка для сброса пароля
                 </div>
 
+                @if ($errors->any())
+                <div class="font-medium text-sm text-danger">
+                    {{ $errors->first() }}
+                </div>
+
+                @endif
+
+                <div class="font-medium text-sm text-success">
+                    {{ session('status') }}
+                </div>
+
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
 
