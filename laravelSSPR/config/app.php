@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //добавляем новые service providers
+        App\Providers\RoleServiceProvider::class,
+        App\Providers\PermissionServiceProvider::class,
+
     ],
 
     /*
