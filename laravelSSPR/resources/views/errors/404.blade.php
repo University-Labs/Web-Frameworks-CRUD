@@ -2,7 +2,7 @@
 @extends('layouts.layout')
 
 @section('title')
-	Категории авто
+	Страница не найдена
 @endsection
 
 @section('content')
