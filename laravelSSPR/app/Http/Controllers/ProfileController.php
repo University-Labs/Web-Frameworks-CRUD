@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
         if($user == null)
             return abort(404);
-        $orders = UserOrder::where('PK_User', $user->id)->orderBy('creation_date');
+        $orders = UserOrder::where('PK_User', $user->id)->orderBy('created_at')->get();
         return view('userprofile', ['user' => $user, 'orders' => $orders]);
     }
 
@@ -34,6 +34,30 @@ class ProfileController extends Controller
                 return back()->with('message', "Товар успешно заказан!");
         }
         else abort(404);
+    }
+
+    public function deleteorder($id)
+    {
+        $user = auth()->user();
+        $order = UserOrder::find($id);
+
+        if($user != null && $order != null)
+            if ($user->id == $order->PK_User)
+            {
+                $order->delete();
+                return back()->with('message', 'Успешно удалено!');
+            }
+            else
+                abort(404);
+        else abort(404);
+    }
+
+    public function vieworder($id)
+    {
+        if(UserOrder::find($id) != null)
+            return redirect()->route('cars.read', ['id' => UserOrder::find($id)->PK_Car]);
+        else
+            abort(404);
     }
 
 }

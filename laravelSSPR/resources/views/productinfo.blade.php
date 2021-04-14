@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <a class="btn btn-info" href="buycar_{{$singleCar->PK_Car}}" role="button">Заказать</a>
+        <a class="btn btn-info" href="{{route('users.buy', $singleCar->PK_Car)}}" role="button">Заказать</a>
         за 1 клик
 
         @if(session('message'))

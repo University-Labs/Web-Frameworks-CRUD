@@ -38,7 +38,7 @@
                   </div>
                 </a>
                 <div class="card-footer mt-auto">
-                  <a class="btn-info btn-lg" href="buycar_{{$car->PK_Car}}" role="button">Заказать</a>
+                  <a class="btn-info btn-lg" href="{{route('users.buy', $car->PK_Car)}}" role="button">Заказать</a>
                 </div>
               </div>
             </div>

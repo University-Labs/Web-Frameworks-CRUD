@@ -56,7 +56,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::group(['middleware' => 'perm:goods-add'], function(){
 		Route::get('profile_user{id}', [ProfileController::class, 'index'])->name('users.index');
-		Route::get('buycar_{id}', [ProfileController::class, 'buycar'])->name('users.buy');
+		Route::get('ordersadd/{id}', [ProfileController::class, 'buycar'])->name('users.buy');
+		Route::delete('orders/{id}', [ProfileController::class, 'deleteorder'])->name('users.deleteorder');
+		Route::get('orders/{id}', [ProfileController::class, 'vieworder'])->name('users.vieworder');
 	});
 
 	Route::group(['middleware' => 'perm:dicts-update'], function(){

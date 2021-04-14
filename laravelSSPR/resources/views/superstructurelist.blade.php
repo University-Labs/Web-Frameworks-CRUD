@@ -12,7 +12,7 @@
 		<h1>Список Надстроек</h1>
 
       	<div class="add-car-button">
-        	<a class="btn btn-primary" href="superstructurecreate" role="button">Добавить</a>
+        	<a class="btn btn-primary" href="{{ route('superstructures.create') }}" role="button">Добавить</a>
       	</div>
 
 	<table class="table table-bordered mb-5">
@@ -32,7 +32,10 @@
 				<td>
 					<div class = "d-flex">
 		                <!-- Админские кнопки редактирования и удаления -->
-		                  <a class="btn btn-primary edit-btn"  href="superstructureedit_{{$super->PK_Superstructure}}" role="button">Изменить</a>
+		                  	<a class="btn btn-primary edit-btn"  href="{{ route('superstructures.edit',
+                  													['id' => $super->PK_Superstructure]) }}" role="button">
+								Изменить
+							</a>
 		                <form method="POST" action="superstructuredelete_{{ $super->PK_Superstructure }}">
 		                  @method('DELETE')
 		                  @csrf
