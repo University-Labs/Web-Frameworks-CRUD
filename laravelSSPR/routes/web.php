@@ -7,6 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BaseavtoController;
 use App\Http\Controllers\SuperstructureController;
 use App\Http\Controllers\AvtofirmController;
+use App\Http\Controllers\ProfileController;
+
 
 
 /*
@@ -50,8 +52,10 @@ Route::group(['middleware' => 'auth'], function() {
 
 	});
 
-	Route::group(['middleware' => 'perm:goods-add'], function(){
 
+
+	Route::group(['middleware' => 'perm:goods-add'], function(){
+		Route::get('profile_user{id}', [ProfileController::class, 'index'])->name('users.index');
 	});
 
 	Route::group(['middleware' => 'perm:dicts-update'], function(){

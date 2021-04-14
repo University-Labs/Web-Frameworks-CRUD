@@ -12,7 +12,7 @@
 		<h1>Список Фирм авто</h1>
 
       	<div class="add-car-button">
-        	<a class="btn btn-primary" href="superstructurecreate" role="button">Добавить</a>
+        	<a class="btn btn-primary" href="avtofirmcreate" role="button">Добавить</a>
       	</div>
 
 	<table class="table table-bordered mb-5">

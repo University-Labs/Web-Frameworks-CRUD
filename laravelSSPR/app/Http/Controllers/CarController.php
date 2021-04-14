@@ -131,6 +131,8 @@ class CarController extends Controller
         //запись файла
         if($req->file('image') != "")
         {
+            if($result->imagePath != null)
+                Storage::disk('public')->delete($result->imagePath);
             $imagePath = $req->file('image')->store('uploads', 'public');
 
             $result->imagePath = $imagePath;
@@ -152,6 +154,8 @@ class CarController extends Controller
 
         if($deletingCar)
         {
+            if($deletingCar->imagePath != null)
+                Storage::disk('public')->delete($deletingCar->imagePath);
             $deletingCar->delete();
         }
 

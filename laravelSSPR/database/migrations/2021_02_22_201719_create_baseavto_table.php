@@ -18,7 +18,10 @@ class CreateBaseavtoTable extends Migration
             Schema::create('baseavto', function (Blueprint $table) {
                 $table->id('PK_BaseAvto');
                 $table->string('modelName', 200);
-                $table->foreignId('PK_AvtoFirm')->constrained('avtofirm');
+
+                $table->unsignedBigInteger('PK_AvtoFirm');
+                $table->foreign('PK_AvtoFirm')->references('PK_AvtoFirm')->on('avtofirm')->onDelete('restrict');
+
             });
         }
     }
