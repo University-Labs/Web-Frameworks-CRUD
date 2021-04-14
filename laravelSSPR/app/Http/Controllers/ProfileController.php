@@ -31,7 +31,7 @@ class ProfileController extends Controller
             if(!$user->buyCar($id))
                 abort(404);
             else
-                return redirect('/catalog')->with('message', "Товар успешно заказан!");
+                return back()->with('message', "Товар успешно заказан!");
         }
         else abort(404);
     }

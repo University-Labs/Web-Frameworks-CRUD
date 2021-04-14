@@ -23,6 +23,13 @@
 
         <a class="btn btn-info" href="buycar_{{$singleCar->PK_Car}}" role="button">Заказать</a>
         за 1 клик
+
+        @if(session('message'))
+          <div class="alert alert-success" role="alert">
+              {{ session('message') }}
+          </div>
+        @endif
+
         <div class="model-info">
           <h5> Описание: </h5>
           <p class="firm">Производитель: {{ $singleCar->baseAvto->avtoFirm->firmName }}</p>
