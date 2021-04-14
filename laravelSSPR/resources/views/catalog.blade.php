@@ -12,7 +12,6 @@
         <h1> Каталог</h1>
         <div class="row">
 
-
           @foreach ($cars as $car)
             <div class="col-lg-3 col-md-6">
               <div class="card single-car-item h-100">
