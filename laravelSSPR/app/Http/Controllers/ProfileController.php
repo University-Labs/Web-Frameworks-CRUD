@@ -22,4 +22,18 @@ class ProfileController extends Controller
         return view('userprofile', ['user' => $user, 'orders' => $orders]);
     }
 
+    public function buycar($id)
+    {
+        $user = auth()->user();
+
+        if($user != null)
+        {
+            if(!$user->buyCar($id))
+                abort(404);
+            else
+                return redirect('/catalog')->with('message', "Товар успешно заказан!");
+        }
+        else abort(404);
+    }
+
 }

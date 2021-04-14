@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::group(['middleware' => 'perm:goods-add'], function(){
 		Route::get('profile_user{id}', [ProfileController::class, 'index'])->name('users.index');
+		Route::get('buycar_{id}', [ProfileController::class, 'buycar'])->name('users.buy');
 	});
 
 	Route::group(['middleware' => 'perm:dicts-update'], function(){

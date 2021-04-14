@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Traits\HasRolesAndPermissions;
 
+use App\Models\UserOrder;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,4 +44,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function buyCar($id)
+    {
+        $order = new UserOrder([
+            'PK_Car' => $id,
+            'PK_User' => $this->id,
+        ]);
+        $order->save();
+
+        if ($order != null)
+            return true;
+        else
+            return false;
+    }
 }

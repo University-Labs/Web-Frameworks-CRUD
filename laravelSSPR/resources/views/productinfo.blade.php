@@ -8,7 +8,7 @@
 
   <main id="content">
     <div class="container">
-      <h1>Информация о модели: {{ $singleCar->superstructure->superstructureName }} на шасси {{$singleCar->baseAvto->avtoFirm->firmName }} - {{ $singleCar->baseAvto->modelName }}</h1>
+      <h1>{{ $singleCar->superstructure->superstructureName }} на шасси {{$singleCar->baseAvto->avtoFirm->firmName }} - {{ $singleCar->baseAvto->modelName }}</h1>
       <div class="feature">
         <h5>Категория: {{ $singleCar->avtoCategory->nameCategory }}</h5>
         <div class="col">
@@ -20,7 +20,11 @@
             @endif
           </div>
         </div>
+
+        <a class="btn btn-info" href="buycar_{{$singleCar->PK_Car}}" role="button">Заказать</a>
+        за 1 клик
         <div class="model-info">
+          <h5> Описание: </h5>
           <p class="firm">Производитель: {{ $singleCar->baseAvto->avtoFirm->firmName }}</p>
           <p class="model">Модель: {{ $singleCar->baseAvto->modelName }}</p>
           <p class="superstructure">Надстройка на авто: {{ $singleCar->superstructure->superstructureName }} </p>

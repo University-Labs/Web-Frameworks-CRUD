@@ -10,6 +10,13 @@
   <main id="content">
       <div class="container">
         <h1> Каталог</h1>
+
+        @if(session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+        </div>
+        @endif
+
         <div class="row">
 
           @foreach ($cars as $car)
@@ -30,6 +37,9 @@
                     <p class="year">Год выпуска: {{$car->yearIssue}}</p>
                   </div>
                 </a>
+                <div class="card-footer mt-auto">
+                  <a class="btn-info btn-lg" href="buycar_{{$car->PK_Car}}" role="button">Заказать</a>
+                </div>
               </div>
             </div>
           @endforeach
