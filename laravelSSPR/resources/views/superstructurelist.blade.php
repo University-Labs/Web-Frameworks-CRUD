@@ -36,7 +36,7 @@
                   													['id' => $super->PK_Superstructure]) }}" role="button">
 								Изменить
 							</a>
-		                <form method="POST" action="superstructuredelete_{{ $super->PK_Superstructure }}">
+		                <form method="POST" action="{{ route('superstructures.delete', $super->PK_Superstructure) }}">
 		                  @method('DELETE')
 		                  @csrf
 		                  <button type="submit" class="btn edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>

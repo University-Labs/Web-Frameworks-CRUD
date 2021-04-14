@@ -13,7 +13,7 @@
 		<h5> Вы точно сюда хотели попасть? </h5>
         <div class="row">
           <div class="col-lg-11">
-            <img src="img/404.jpg" class="img-fluid">
+            <img src="{{ asset('/img/404.jpg') }}" class="img-fluid">
           </div>
         </div>
 	</div>

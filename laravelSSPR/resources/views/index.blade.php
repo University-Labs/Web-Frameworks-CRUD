@@ -20,12 +20,12 @@
 
           <div class="company-info col-lg-7">
             <p class="h1">Низкие цены</p>
-            <a href="catalog"> <p class="h1">Просмотр техники</p> </a>
+            <a href="{{route('catalog')}}"> <p class="h1">Просмотр техники</p> </a>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-11">
-            <img src="img/indeximage.png" class="img-fluid">
+            <img src="{{ asset('img/indeximage.png') }}" class="img-fluid">
           </div>
         </div>
       </div>

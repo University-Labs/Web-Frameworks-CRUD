@@ -22,12 +22,12 @@
           @foreach ($cars as $car)
             <div class="col-lg-3 col-md-6">
               <div class="card single-car-item h-100">
-                <a href="productinfo_{{$car->PK_Car}}">
+                <a href="{{route('cars.read', $car->PK_Car) }}">
 
                   @if ($car->imagePath)
-                    <img src="{{asset('/storage/' . $car->imagePath)}}" class="card-img-top" alt="No image">
+                    <img src="{{ asset('/storage/' . $car->imagePath) }}" class="card-img-top" alt="No image">
                   @else
-                    <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+                    <img src="{{ asset('/img/emptyimage.png') }}" class="card-img-top" alt="Отсутствует">
                   @endif
 
                   <div class="card-body">
@@ -38,7 +38,7 @@
                   </div>
                 </a>
                 <div class="card-footer mt-auto">
-                  <a class="btn-info btn-lg" href="{{route('users.buy', $car->PK_Car)}}" role="button">Заказать</a>
+                  <a class="btn-info btn-lg" href="{{ route('users.buy', $car->PK_Car) }}" role="button">Заказать</a>
                 </div>
               </div>
             </div>

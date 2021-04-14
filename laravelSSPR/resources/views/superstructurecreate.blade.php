@@ -20,8 +20,10 @@
       @endif
         @if ($curSuper->exists)
           <form method="POST" action="{{ route('superstructures.update', $curSuper->PK_Superstructure) }}">
+          @method('PUT')
         @else
           <form method="POST" action="{{ route('superstructures.store') }}" id="formStore">
+          @method('POST')
         @endif
         @csrf
 

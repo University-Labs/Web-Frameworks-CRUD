@@ -20,8 +20,10 @@
       @endif
         @if ($curCat->exists)
           <form method="POST" action="{{ route('categories.update', $curCat->PK_Category) }}">
+          @method('PUT')
         @else
           <form method="POST" action="{{ route('categories.store') }}" id="formStore">
+          @method('POST')
         @endif
         @csrf
 

@@ -63,6 +63,7 @@ class CarController extends Controller
         $superstructures = Superstructure::all();
         $baseavtos = BaseAvto::all();
 
+
         return view('productedit',
         [
             'curCar' => $newCar,

@@ -22,8 +22,10 @@
       @endif
         @if ($curCar->exists)
           <form method="POST" action="{{ route('cars.update', $curCar->PK_Car) }}" enctype="multipart/form-data">
+          @method('PUT')
         @else
           <form method="POST" action="{{ route('cars.store') }}" enctype="multipart/form-data" id="formStore">
+          @method('POST')
         @endif
         @csrf
 

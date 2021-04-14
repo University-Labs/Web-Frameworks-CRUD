@@ -11,7 +11,7 @@
 		<h1>Список баз для спецтехники</h1>
 
       	<div class="add-car-button">
-        	<a class="btn btn-primary" id="add-baseavto-btn" href="baseavtocreate" role="button">Добавить</a>
+        	<a class="btn btn-primary" id="add-baseavto-btn" href="{{route('bases.create') }}" role="button">Добавить</a>
       	</div>
 
 	<table class="table table-bordered mb-5">
@@ -33,8 +33,8 @@
 				<td>
 					<div class = "d-flex">
 		                <!-- Админские кнопки редактирования и удаления -->
-		                  <a class="btn btn-primary edit-btn"  href="baseavtoedit_{{$base->PK_BaseAvto}}" role="button">Изменить</a>
-		                <form method="POST" action="baseavtodelete_{{ $base->PK_BaseAvto }}">
+		                  <a class="btn btn-primary edit-btn"  href="{{ route('bases.edit', $base->PK_BaseAvto) }}" role="button">Изменить</a>
+		                <form method="POST" action="{{ route('bases.delete', $base->PK_BaseAvto) }}">
 		                  @method('DELETE')
 		                  @csrf
 		                  <button type="submit" class="btn edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>

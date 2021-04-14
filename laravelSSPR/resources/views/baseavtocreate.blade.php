@@ -20,8 +20,10 @@
       @endif
         @if ($curBase->exists)
           <form method="POST" action="{{ route('bases.update', $curBase->PK_BaseAvto) }}">
+          @method('PUT')
         @else
           <form method="POST" action="{{ route('bases.store') }}" id="formStore">
+          @method('POST')
         @endif
         @csrf
 

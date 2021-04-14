@@ -26,29 +26,29 @@ Route::get('/', [CarController::class, 'index'])->name('index');
 
 Route::get('/catalog', [CarController::class, 'catalog'])->name('catalog');
 
-Route::get('/productinfo_{id}', [CarController::class, 'productinfo'])->name('cars.read');
+Route::get('cars/{id}', [CarController::class, 'productinfo'])->name('cars.read');
 
 
 Route::group(['middleware' => 'auth'], function() {
 
 	Route::group(['middleware' => 'role:admin'], function(){
 		Route::get('/pageadmin', [CarController::class, 'pageadmin'])->name('cars.list');
-		Route::get('/avtocategorylist', [CategoryController::class, 'avtocategorylist'])->name('categories.list');
-		Route::get('/baseavtolist', [BaseavtoController::class, 'baseavtolist'])->name('bases.list');
-		Route::get('/superstructurelist', [SuperstructureController::class, 'superstructurelist'])->name('superstructures.list');
-		Route::get('/avtofirmlist', [AvtofirmController::class, 'avtofirmlist'])->name('avtofirms.list');
+		Route::get('/categories', [CategoryController::class, 'avtocategorylist'])->name('categories.list');
+		Route::get('/bases', [BaseavtoController::class, 'baseavtolist'])->name('bases.list');
+		Route::get('/superstructures', [SuperstructureController::class, 'superstructurelist'])->name('superstructures.list');
+		Route::get('/avtofirms', [AvtofirmController::class, 'avtofirmlist'])->name('avtofirms.list');
 	});
 
 	Route::group(['middleware' => 'perm:catalog-update'], function(){
-		Route::delete('/deletecar_{id}', [CarController::class, 'deleteCar'])->name('cars.delete');
+		Route::delete('cars/{id}', [CarController::class, 'deleteCar'])->name('cars.delete');
 
-		Route::get('createcar', [CarController::class, 'createcar'])->name('cars.create');
+		Route::get('cars_create', [CarController::class, 'createcar'])->name('cars.create');
 
-		Route::post('createcar', [CarController::class, 'storecar'])->name('cars.store');
+		Route::post('cars/create', [CarController::class, 'storecar'])->name('cars.store');
 
-		Route::get('editcar_{id}', [CarController::class, 'editcar'])->name('cars.edit');
+		Route::get('editcars/{id}', [CarController::class, 'editcar'])->name('cars.edit');
 
-		Route::post('updatecar_{id}', [CarController::class, 'updatecar'])->name('cars.update');
+		Route::put('cars/{id}', [CarController::class, 'updatecar'])->name('cars.update');
 
 	});
 
@@ -62,29 +62,29 @@ Route::group(['middleware' => 'auth'], function() {
 	});
 
 	Route::group(['middleware' => 'perm:dicts-update'], function(){
-		Route::get('/avtocategorycreate', [CategoryController::class, 'avtocategorycreate'])->name('categories.create');
-		Route::post('/avtocategorycreate', [CategoryController::class, 'storeavtocategory'])->name('categories.store');
-		Route::delete('/avtocategorydelete_{id}', [CategoryController::class, 'deleteavtocategory'])->name('categories.delete');
-		Route::get('/avtocategoryedit_{id}', [CategoryController::class, 'avtocategoryedit'])->name('categories.edit');
-		Route::post('/avtocategoryupdate_{id}', [CategoryController::class, 'updateavtocategory'])->name('categories.update');
+		Route::get('/categories_create', [CategoryController::class, 'avtocategorycreate'])->name('categories.create');
+		Route::post('/categories/create', [CategoryController::class, 'storeavtocategory'])->name('categories.store');
+		Route::delete('/categories/{id}', [CategoryController::class, 'deleteavtocategory'])->name('categories.delete');
+		Route::get('/editcategories/{id}', [CategoryController::class, 'avtocategoryedit'])->name('categories.edit');
+		Route::put('/categories/{id}', [CategoryController::class, 'updateavtocategory'])->name('categories.update');
 
-		Route::get('/baseavtocreate', [BaseavtoController::class, 'baseavtocreate'])->name('bases.create');
-		Route::post('/baseavtocreate', [BaseavtoController::class, 'storebaseavto'])->name('bases.store');
-		Route::delete('/baseavtodelete_{id}', [BaseavtoController::class, 'deletebaseavto'])->name('bases.delete');
-		Route::get('/baseavtoedit_{id}', [BaseavtoController::class, 'baseavtoedit'])->name('bases.edit');
-		Route::post('/baseavtoupdate_{id}', [BaseavtoController::class, 'updatebaseavto'])->name('bases.update');
+		Route::get('/bases_create', [BaseavtoController::class, 'baseavtocreate'])->name('bases.create');
+		Route::post('/bases/create', [BaseavtoController::class, 'storebaseavto'])->name('bases.store');
+		Route::delete('/bases/{id}', [BaseavtoController::class, 'deletebaseavto'])->name('bases.delete');
+		Route::get('/editbases/{id}', [BaseavtoController::class, 'baseavtoedit'])->name('bases.edit');
+		Route::put('/bases/{id}', [BaseavtoController::class, 'updatebaseavto'])->name('bases.update');
 
-		Route::get('/superstructurecreate', [SuperstructureController::class, 'superstructurecreate'])->name('superstructures.create');
-		Route::post('/superstructurecreate', [SuperstructureController::class, 'storesuperstructure'])->name('superstructures.store');
-		Route::delete('/superstructuredelete_{id}', [SuperstructureController::class, 'deletesuperstructure'])->name('superstructures.delete');
-		Route::get('/superstructureedit_{id}', [SuperstructureController::class, 'superstructureedit'])->name('superstructures.edit');
-		Route::post('/superstructureupdate_{id}', [SuperstructureController::class, 'updatesuperstructure'])->name('superstructures.update');
+		Route::get('/superstruectures_create', [SuperstructureController::class, 'superstructurecreate'])->name('superstructures.create');
+		Route::post('/superstruectures/create', [SuperstructureController::class, 'storesuperstructure'])->name('superstructures.store');
+		Route::delete('/superstruectures/{id}', [SuperstructureController::class, 'deletesuperstructure'])->name('superstructures.delete');
+		Route::get('/editsuperstruectures/{id}', [SuperstructureController::class, 'superstructureedit'])->name('superstructures.edit');
+		Route::put('/superstructures/{id}', [SuperstructureController::class, 'updatesuperstructure'])->name('superstructures.update');
 
-		Route::get('/avtofirmcreate', [AvtofirmController::class, 'avtofirmcreate'])->name('avtofirms.create');
-		Route::post('/avtofirmcreate', [AvtofirmController::class, 'storeavtofirm'])->name('avtofirms.store');
-		Route::delete('/avtofirmdelete_{id}', [AvtofirmController::class, 'deleteavtofirm'])->name('avtofirms.delete');
-		Route::get('/avtofirmedit_{id}', [AvtofirmController::class, 'avtofirmedit'])->name('avtofirms.edit');
-		Route::post('/avtofirmupdate_{id}', [AvtofirmController::class, 'updateavtofirm'])->name('avtofirms.update');
+		Route::get('/avtofirms_create', [AvtofirmController::class, 'avtofirmcreate'])->name('avtofirms.create');
+		Route::post('/avtofirms/create', [AvtofirmController::class, 'storeavtofirm'])->name('avtofirms.store');
+		Route::delete('/avtofirms/{id}', [AvtofirmController::class, 'deleteavtofirm'])->name('avtofirms.delete');
+		Route::get('/editavtofirms/{id}', [AvtofirmController::class, 'avtofirmedit'])->name('avtofirms.edit');
+		Route::put('/avtofirms/{id}', [AvtofirmController::class, 'updateavtofirm'])->name('avtofirms.update');
 	});
 
 });

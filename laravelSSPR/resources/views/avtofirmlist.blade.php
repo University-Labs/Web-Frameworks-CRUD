@@ -12,7 +12,7 @@
 		<h1>Список Фирм авто</h1>
 
       	<div class="add-car-button">
-        	<a class="btn btn-primary" href="avtofirmcreate" role="button">Добавить</a>
+        	<a class="btn btn-primary" href="{{route('avtofirms.create') }}" role="button">Добавить</a>
       	</div>
 
 	<table class="table table-bordered mb-5">
@@ -32,8 +32,8 @@
 				<td>
 					<div class = "d-flex">
 		                <!-- Админские кнопки редактирования и удаления -->
-		                  <a class="btn btn-primary edit-btn"  href="avtofirmedit_{{$firm->PK_AvtoFirm}}" role="button">Изменить</a>
-		                <form method="POST" action="avtofirmdelete_{{ $firm->PK_AvtoFirm }}">
+		                  <a class="btn btn-primary edit-btn"  href="{{ route('avtofirms.edit', $firm->PK_AvtoFirm) }}" role="button">Изменить</a>
+		                <form method="POST" action="{{ route('avtofirms.delete', $firm->PK_AvtoFirm) }}">
 		                  @method('DELETE')
 		                  @csrf
 		                  <button type="submit" class="btn edit" onclick="return confirm('Вы действительно хотите удалить запись?');">Удалить</button>

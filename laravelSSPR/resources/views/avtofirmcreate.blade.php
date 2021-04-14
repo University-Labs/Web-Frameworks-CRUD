@@ -20,8 +20,10 @@
       @endif
         @if ($curFirm->exists)
           <form method="POST" action="{{ route('avtofirms.update', $curFirm->PK_AvtoFirm) }}">
+          @method('PUT')
         @else
           <form method="POST" action="{{ route('avtofirms.store') }}" id="formStore">
+          @method('POST')
         @endif
         @csrf
 

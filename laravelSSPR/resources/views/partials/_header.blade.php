@@ -14,12 +14,12 @@
               </li>
 
               <li class="nav-item">
-                <a href="{{url('catalog')}}" class="nav-link">Каталог</a>
+                <a href="{{route('catalog')}}" class="nav-link">Каталог</a>
               </li>
 
               @role('admin')
                 <li class="nav-item">
-                  <a href="{{url('pageadmin')}}" class="nav-link">Режим администратора</a>
+                  <a href="{{route('cars.list')}}" class="nav-link">Режим администратора</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -27,10 +27,10 @@
                     Справочники
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dictionarities">
-                    <li class="nav-item"><a class="dropdown-item" href="{{url('avtocategorylist')}}">Категории</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="{{url('superstructurelist')}}">Надстройки</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="{{url('baseavtolist')}}">База авто</a></li>
-                    <li class="nav-item"><a class="dropdown-item" href="{{url('avtofirmlist')}}">Фирмы авто</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="{{route('categories.list')}}">Категории</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="{{route('superstructures.list')}}">Надстройки</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="{{route('bases.list')}}">База авто</a></li>
+                    <li class="nav-item"><a class="dropdown-item" href="{{route('avtofirms.list')}}">Фирмы авто</a></li>
                   </ul>
                 </li>
               @endrole
@@ -44,7 +44,7 @@
                       <form method="POST" class="row" action="{{ route('logout') }}">
                         @csrf
                         <div class="col">
-                          <a id="userLink" class="nav-link nav-item" href="profile_user{{ Auth::user()->id }}">
+                          <a id="userLink" class="nav-link nav-item" href="{{route ('users.index', Auth::user()->id) }}">
                             {{ Auth::user()->username }}
                           </a>
                         </div>

@@ -16,7 +16,7 @@
             @if ($singleCar->imagePath)
               <img src="{{asset('/storage/' . $singleCar->imagePath)}}" class="card-img-top" alt="No image">
             @else
-              <img src="img/emptyimage.png" class="card-img-top" alt="Отсутствует">
+              <img src="{{ asset('/img/emptyimage.png') }}" class="card-img-top" alt="Отсутствует">
             @endif
           </div>
         </div>
